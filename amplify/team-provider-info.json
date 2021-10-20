@@ -1,0 +1,15 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-barberappointments-dev-64013-authRole",
+      "UnauthRoleArn": "arn:aws:iam::862323471321:role/amplify-barberappointments-dev-64013-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::862323471321:role/amplify-barberappointments-dev-64013-authRole",
+      "Region": "eu-west-2",
+      "DeploymentBucketName": "amplify-barberappointments-dev-64013-deployment",
+      "UnauthRoleName": "amplify-barberappointments-dev-64013-unauthRole",
+      "StackName": "amplify-barberappointments-dev-64013",
+      "StackId": "arn:aws:cloudformation:eu-west-2:862323471321:stack/amplify-barberappointments-dev-64013/33c8f310-3168-11ec-963b-0aabcabc9e6e",
+      "AmplifyAppId": "d1z20x1lbvucuj"
+    }
+  }
+}
