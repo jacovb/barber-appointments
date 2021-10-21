@@ -10,6 +10,11 @@
       "StackName": "amplify-barberappointments-dev-64013",
       "StackId": "arn:aws:cloudformation:eu-west-2:862323471321:stack/amplify-barberappointments-dev-64013/33c8f310-3168-11ec-963b-0aabcabc9e6e",
       "AmplifyAppId": "d1z20x1lbvucuj"
+    },
+    "categories": {
+      "auth": {
+        "barberappointmentsced1b5f3": {}
+      }
     }
   }
 }
