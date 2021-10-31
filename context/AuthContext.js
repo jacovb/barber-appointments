@@ -63,30 +63,33 @@ const AuthProvider = ({ children }) => {
   };
 
   React.useEffect(() => {
-    try {
-      const session = await getCurrentSession();
-      const user = await getCurrentUser();
+    async function getSessionInfo() {
+      try {
+        const session = await getCurrentSession();
+        const user = await getCurrentUser();
 
-      const accessToken = session.getAccessToken();
-      const refreshToken = session.getRefreshToken();
-      setSessionInfo({
-        accessToken,
-        refreshToken,
-      });
+        const accessToken = session.getAccessToken();
+        const refreshToken = session.getRefreshToken();
+        setSessionInfo({
+          accessToken,
+          refreshToken,
+        });
 
-      window.localStorage.setItem("accessToken", `${accessToken}`);
-      window.localStorage.setItem("refreshToken", `${refreshToken}`);
+        window.localStorage.setItem("accessToken", `${accessToken}`);
+        window.localStorage.setItem("refreshToken", `${refreshToken}`);
 
-      setUserInfo({
-        email: user.attributes.email,
-        isContributor: user.attributes["custom:type"] === "contributor",
-        username: user.username,
-      });
+        setUserInfo({
+          email: user.attributes.email,
+          isContributor: user.attributes["custom:type"] === "contributor",
+          username: user.username,
+        });
 
-      setIsSignedIn(true);
-    } catch (err) {
-      setIsSignedIn(false);
+        setIsSignedIn(true);
+      } catch (err) {
+        setIsSignedIn(false);
+      }
     }
+    getSessionInfo();
   }, [isSignedIn, setIsSignedIn]);
 
   if (isSignedIn === null || undefined) {
