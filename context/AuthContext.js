@@ -92,6 +92,20 @@ const AuthProvider = ({ children }) => {
     getSessionInfo();
   }, [isSignedIn, setIsSignedIn]);
 
+  // React.useEffect(() => {
+  //   async function getCurrentUserDetails() {
+  //     if (userInfo !== initializeUser) {
+  //       try {
+  //         const userDetails = await getUserDetails(userInfo.username);
+  //         setCurrentUserDetails(userDetails.data.getUser)
+  //       } catch(err) {
+  //         console.log(err)
+  //       }
+  //     }
+  //   }
+  //   getCurrentUserDetails();
+  // }, [userInfo, setUserInfo])
+
   if (isSignedIn === null || undefined) {
     return null;
   }
@@ -114,6 +128,7 @@ const AuthProvider = ({ children }) => {
     currentUserDetails,
     signUp,
     getCurrentSession,
+    getCurrentUser,
   };
 
   return <AuthContext.Provider value={state}>{children}</AuthContext.Provider>;

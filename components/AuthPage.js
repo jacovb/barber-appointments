@@ -1,7 +1,8 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { Auth } from "aws-amplify";
 import "../src/configureAmplify";
 import SignIn from "./SignIn";
+import { AuthContext } from "../context/AuthContext";
 
 const initialState = { email: "", password: "", authCode: "" };
 
@@ -9,12 +10,14 @@ export default function AuthPage() {
   const [uiState, setUiState] = useState(null);
   const [formState, setFormState] = useState(initialState);
   const [user, setUser] = useState(null);
+  const authContext = useContext(AuthContext);
 
   useEffect(() => {
     checkUser();
     async function checkUser() {
       try {
-        const user = await Auth.currentAuthenticatedUser();
+        const user = await authContext.getCurrentUser();
+        console.log(user);
         setUser(user);
         setUiState("signedIn");
       } catch (err) {

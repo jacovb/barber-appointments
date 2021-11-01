@@ -1,5 +1,6 @@
 import React from "react";
 import Link from "next/link";
+import { Auth } from "aws-amplify";
 
 export default function Navbar() {
   return (
@@ -13,6 +14,7 @@ export default function Navbar() {
       <Link href="/payment">
         <a className="ml-4">Payment</a>
       </Link>
+      <button onClick={() => Auth.signOut()}>Sign Out</button>
     </nav>
   );
 }
