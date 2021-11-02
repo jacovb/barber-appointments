@@ -9,14 +9,7 @@ function MyApp({ Component, pageProps }) {
   return (
     <div>
       <AuthProvider>
-        <AuthIsSignedIn>
-          <Navbar />
-          <Component {...pageProps} />
-          {/* How to navigate to welcome here? */}
-        </AuthIsSignedIn>
-        <AuthIsNotSignedIn>
-          <Component {...pageProps} />
-        </AuthIsNotSignedIn>
+        <Component {...pageProps} />
       </AuthProvider>
     </div>
   );

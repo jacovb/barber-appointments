@@ -1,8 +1,10 @@
 import { Auth } from "aws-amplify";
 import SocialSignIn from "./SocialSignIn";
 import Input from "./Input";
+import { useRouter } from "next/router";
 
-export default function SignIn({ onChange, setUiState, signIn }) {
+export default function SignIn({ onChange, signIn }) {
+  const router = useRouter();
   return (
     <div>
       <p className="text-3xl font-black">Sign in to your account</p>
@@ -14,7 +16,7 @@ export default function SignIn({ onChange, setUiState, signIn }) {
         <label className="text-sm">
           Password
           <span
-            onClick={() => setUiState("forgotPassword")}
+            onClick={() => router.push("/forgotPassword")}
             role="button"
             className="text-sm ml-8 sm:ml-56 text-pink-600 cursor-pointer"
           >
@@ -33,7 +35,7 @@ export default function SignIn({ onChange, setUiState, signIn }) {
       <p className="mt-12 text-sm font-light">
         Don't have an account?
         <span
-          onClick={() => setUiState("signUp")}
+          onClick={() => router.push("/signUp")}
           role="button"
           className="cursor-pointer text-pink-600 ml-2"
         >

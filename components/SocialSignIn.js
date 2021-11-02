@@ -1,5 +1,5 @@
 import { Auth } from "aws-amplify";
-import { FaGoogle, faGoogle } from "react-icons/fa";
+import { FaGoogle } from "react-icons/fa";
 
 export default function SocialSignIn() {
   return (
