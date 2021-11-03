@@ -2,9 +2,18 @@ import { Auth } from "aws-amplify";
 import SocialSignIn from "./SocialSignIn";
 import Input from "./Input";
 import { useRouter } from "next/router";
+import { useContext, useState } from "react";
+import { AuthContext } from "../context/AuthContext";
 
-export default function SignIn({ onChange, signIn }) {
+export default function SignIn() {
+  const authContext = useContext(AuthContext);
+  const [formState, setFormState] = useState(null);
   const router = useRouter();
+
+  function onChange(e) {
+    setFormState({ ...formState, [e.target.name]: e.target.value });
+  }
+
   return (
     <div>
       <p className="text-3xl font-black">Sign in to your account</p>
@@ -26,7 +35,7 @@ export default function SignIn({ onChange, signIn }) {
         <Input onChange={onChange} name="email" type="password" />
       </div>
       <button
-        onClick={signIn}
+        onClick={authContext.signIn}
         className="text-white w-full mt-6 bg-pink-600 p-3 rounded"
       >
         Sign In
