@@ -29,70 +29,74 @@ export default function SignUp() {
   };
 
   return (
-    <>
-      <form onSubmit={handleSubmit(onSubmit)} className="signin-form">
-        <label htmlFor="name" className="signin-label">
-          Name:
-        </label>
-        <input
-          {...register("name", { required: true })}
-          className="signin-input"
-          id="name"
-          autoComplete="off"
-        />
-        <label htmlFor="surname" className="signin-label">
-          Surname:
-        </label>
-        <input
-          {...register("surname", { required: true })}
-          className="signin-input"
-          id="surname"
-          autoComplete="off"
-        />
-        <select
-          {...register("gender", { required: true })}
-          className="signin-option"
-          id="gender"
-        >
-          <option value="" disabled hidden>
-            -- Select Gender --
-          </option>
-          <option value="Male">Male</option>
-          <option value="Female">Female</option>
-          <option value="Other">Other</option>
-        </select>
-        <label htmlFor="email" className="signin-label">
-          Email:
-        </label>
-        <input
-          {...register("email", { required: true })}
-          className="signin-input"
-          id="email"
-          autoComplete="off"
-        />
-        <label htmlFor="password" className="signin-label">
-          Password:
-        </label>
-        <input
-          {...register("password", { required: true })}
-          className="signin-input"
-          id="password"
-          autoComplete="off"
-          type="password"
-        />
-        <label htmlFor="confirmPassword" className="signin-label">
-          Confirm Password:
-        </label>
-        <input
-          {...register("confirmPassword", { required: true })}
-          className="signin-input"
-          id="confirmPassword"
-          autoComplete="off"
-          type="password"
-        />
-        <input type="submit" value="Sign Up" className="signin-button" />
-        {/* Add useRouter to get to confirmation Code */}
-      </form>
-    </>
+    <div className="bg-gray-50 min-h-screen">
+      <div className="flex flex-col items-center">
+        <div className="max-w-full sm:w-780 mt-14 bg-white py-14 px-16 shadow-form rounded">
+          <form onSubmit={handleSubmit(onSubmit)} className="signin-form">
+            <label htmlFor="name" className="signin-label">
+              Name:
+            </label>
+            <input
+              {...register("name", { required: true })}
+              className="signin-input"
+              id="name"
+              autoComplete="off"
+            />
+            <label htmlFor="surname" className="signin-label">
+              Surname:
+            </label>
+            <input
+              {...register("surname", { required: true })}
+              className="signin-input"
+              id="surname"
+              autoComplete="off"
+            />
+            <select
+              {...register("gender", { required: true })}
+              className="signin-option"
+              id="gender"
+            >
+              <option value="" disabled hidden>
+                -- Select Gender --
+              </option>
+              <option value="Male">Male</option>
+              <option value="Female">Female</option>
+              <option value="Other">Other</option>
+            </select>
+            <label htmlFor="email" className="signin-label">
+              Email:
+            </label>
+            <input
+              {...register("email", { required: true })}
+              className="signin-input"
+              id="email"
+              autoComplete="off"
+            />
+            <label htmlFor="password" className="signin-label">
+              Password:
+            </label>
+            <input
+              {...register("password", { required: true })}
+              className="signin-input"
+              id="password"
+              autoComplete="off"
+              type="password"
+            />
+            <label htmlFor="confirmPassword" className="signin-label">
+              Confirm Password:
+            </label>
+            <input
+              {...register("confirmPassword", { required: true })}
+              className="signin-input"
+              id="confirmPassword"
+              autoComplete="off"
+              type="password"
+            />
+            <input type="submit" value="Sign Up" className="signin-button" />
+            {/* Add useRouter to get to confirmation Code */}
+          </form>
+        </div>
+      </div>
+    </div>
   );
 }
