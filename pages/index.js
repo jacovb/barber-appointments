@@ -1,26 +1,21 @@
-import Head from "next/head";
-import Image from "next/image";
-import styles from "../styles/Home.module.css";
-import AuthPage from "../components/AuthPage";
-import AuthProvider, {
-  AuthIsSignedIn,
-  AuthIsNotSignedIn,
-} from "../context/AuthContext";
-import Welcome from "./welcome";
-import Navbar from "../components/Navbar";
+import { useContext } from "react";
+import { AuthContext } from "../context/AuthContext";
+import { Auth } from "aws-amplify";
 
 export default function Home() {
+  const authContext = useContext(AuthContext);
+
   return (
     <>
-      <AuthProvider>
-        <AuthIsNotSignedIn>
-          <AuthPage />
-        </AuthIsNotSignedIn>
-        <AuthIsSignedIn>
-          <Navbar />
-          <Welcome />
-        </AuthIsSignedIn>
-      </AuthProvider>
+      <p className="text-xl">Welcome, {authContext.userInfo.email}</p>
+      <button
+        className="text-white w-full mt-10 bg-pink-600 p-3 rounded"
+        onClick={() => {
+          Auth.signOut();
+        }}
+      >
+        Sign Out
+      </button>
     </>
   );
 }

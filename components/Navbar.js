@@ -8,7 +8,7 @@ export default function Navbar() {
       <Link href="/">
         <a>Home</a>
       </Link>
-      <Link href="/book">
+      <Link href="/booking">
         <a className="ml-4">Book Appointment</a>
       </Link>
       <Link href="/payment">

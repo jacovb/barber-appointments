@@ -5,7 +5,7 @@ import { useRouter } from "next/router";
 import { useContext, useState } from "react";
 import { AuthContext } from "../context/AuthContext";
 
-export default function SignIn() {
+export default function SignIn({ setAuthState }) {
   const authContext = useContext(AuthContext);
   const [formState, setFormState] = useState(null);
   const router = useRouter();
@@ -25,7 +25,7 @@ export default function SignIn() {
         <label className="text-sm">
           Password
           <span
-            onClick={() => router.push("/forgotPassword")}
+            onClick={() => setAuthState("forgotPassword")}
             role="button"
             className="text-sm ml-8 sm:ml-56 text-pink-600 cursor-pointer"
           >
@@ -44,7 +44,7 @@ export default function SignIn() {
       <p className="mt-12 text-sm font-light">
         Don't have an account?
         <span
-          onClick={() => router.push("/signUp")}
+          onClick={() => setAuthState("signUp")}
           role="button"
           className="cursor-pointer text-pink-600 ml-2"
         >
