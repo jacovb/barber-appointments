@@ -1,0 +1,26 @@
+type User @model @auth(rules: [{ allow: public }]) {
+  id: ID!
+  name: String
+  surname: String
+  gender: String
+  email: AWSEmail
+  phone: AWSPhone
+  bookings: [Booking] @connection(name: "UserBookings")
+}
+
+type Treatment @model @auth(rules: [{ allow: public }]) {
+  id: ID!
+  title: String
+  description: String
+  price: Float
+  bookings: [Booking] @connection(name: "TreatmentBookings")
+}
+
+type Booking @model @auth(rules: [{ allow: public }]) {
+  id: ID!
+  date: AWSDate
+  time: AWSTime
+  user: User @connection(name: "UserBookings")
+  treatment: Treatment @connection(name: "TreatmentBookings")
+  paid: Boolean
+}

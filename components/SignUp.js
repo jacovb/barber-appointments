@@ -42,19 +42,19 @@ export default function SignUp({ setAuthState }) {
           />
         </div>
         <div className="mt-4">
-          <label htmlFor="surname" className="signin-label">
+          <label htmlFor="surname" className="text-sm">
             Surname:
           </label>
           <input
             {...register("surname", { required: true })}
-            className="signin-input"
+            className="outline-none border-gray-300 border rounded p-2 mt-3 w-full focus:shadow-inputfocus focus:border-white"
             id="surname"
             autoComplete="off"
           />
         </div>
         <select
           {...register("gender", { required: true })}
-          className="signin-option"
+          className="text-sm"
           id="gender"
         >
           <option value="" disabled hidden>
@@ -64,36 +64,47 @@ export default function SignUp({ setAuthState }) {
           <option value="Female">Female</option>
           <option value="Other">Other</option>
         </select>
-        <label htmlFor="email" className="signin-label">
-          Email:
-        </label>
+        <div>
+          <label htmlFor="email" className="text-sm">
+            Email:
+          </label>
+          <input
+            {...register("email", { required: true })}
+            className="outline-none border-gray-300 border rounded p-2 mt-3 w-full focus:shadow-inputfocus focus:border-white"
+            id="email"
+            autoComplete="off"
+          />
+        </div>
+        <div>
+          <label htmlFor="password" className="text-sm">
+            Password:
+          </label>
+          <input
+            {...register("password", { required: true })}
+            className="outline-none border-gray-300 border rounded p-2 mt-3 w-full focus:shadow-inputfocus focus:border-white"
+            id="password"
+            autoComplete="off"
+            type="password"
+          />
+        </div>
+        <div>
+          <label htmlFor="confirmPassword" className="text-sm">
+            Confirm Password:
+          </label>
+          <input
+            {...register("confirmPassword", { required: true })}
+            className="outline-none border-gray-300 border rounded p-2 mt-3 w-full focus:shadow-inputfocus focus:border-white"
+            id="confirmPassword"
+            autoComplete="off"
+            type="password"
+          />
+        </div>
+
         <input
-          {...register("email", { required: true })}
-          className="signin-input"
-          id="email"
-          autoComplete="off"
+          type="submit"
+          value="Sign Up"
+          className="text-white w-full mt-6 bg-pink-600 p-3 rounded"
         />
-        <label htmlFor="password" className="signin-label">
-          Password:
-        </label>
-        <input
-          {...register("password", { required: true })}
-          className="signin-input"
-          id="password"
-          autoComplete="off"
-          type="password"
-        />
-        <label htmlFor="confirmPassword" className="signin-label">
-          Confirm Password:
-        </label>
-        <input
-          {...register("confirmPassword", { required: true })}
-          className="signin-input"
-          id="confirmPassword"
-          autoComplete="off"
-          type="password"
-        />
-        <input type="submit" value="Sign Up" className="signin-button" />
         <p>
           Already Signed Up?
           <span
