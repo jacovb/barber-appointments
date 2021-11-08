@@ -14,6 +14,7 @@ export default function SignIn({ setAuthState }) {
 
   return (
     <div>
+      {console.log(formState)}
       <p className="text-3xl font-black">Sign in to your account</p>
       <div className="mt-10">
         <label className="text-sm">Email</label>
@@ -33,7 +34,7 @@ export default function SignIn({ setAuthState }) {
         <Input onChange={onChange} name="email" type="password" />
       </div>
       <button
-        onClick={authContext.signIn}
+        onClick={() => authContext.signIn(formState.email, formState.password)}
         className="text-white w-full mt-6 bg-pink-600 p-3 rounded"
       >
         Sign In

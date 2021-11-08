@@ -8,23 +8,23 @@ export default function SignUp({ setAuthState }) {
   const { register, handleSubmit } = useForm();
 
   const onSubmit = async (data) => {
-    if (data.password !== data.confirmPassword) {
-      setErrorMessage("Passwords do not match");
-    } else {
-      try {
-        await authContext.signUp(
-          data.email,
-          data.password,
-          data.name,
-          data.surname,
-          data.gender,
-          data.phoneNumber
-        );
-        setAuthState("verifySignUp");
-      } catch (err) {
-        setErrorMessage(err.message);
-      }
+    // if (data.password !== data.confirmPassword) {
+    //   setErrorMessage("Passwords do not match");
+    // } else {
+    try {
+      await authContext.signUp(
+        data.email,
+        data.password,
+        data.name,
+        data.surname,
+        data.gender
+      );
+      setAuthState("verifySignUp");
+    } catch (err) {
+      setErrorMessage(err.message);
     }
+    // }
+    console.log(data);
   };
 
   return (
@@ -88,23 +88,11 @@ export default function SignUp({ setAuthState }) {
             type="password"
           />
         </div>
-        <div>
-          <label htmlFor="confirmPassword" className="text-sm">
-            Confirm Password:
-          </label>
-          <input
-            {...register("confirmPassword", { required: true })}
-            className="outline-none border-gray-300 border rounded p-2 mt-3 w-full focus:shadow-inputfocus focus:border-white"
-            id="confirmPassword"
-            autoComplete="off"
-            type="password"
-          />
-        </div>
 
         <input
           type="submit"
           value="Sign Up"
-          className="text-white w-full mt-6 bg-pink-600 p-3 rounded"
+          className="text-white w-full mt-6 bg-pink-600 p-3 rounded cursor-pointer"
         />
         <p>
           Already Signed Up?

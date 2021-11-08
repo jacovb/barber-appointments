@@ -125,7 +125,7 @@ const AuthProvider = ({ children }) => {
     return null;
   }
 
-  const signUp = async (email, password, name, surname, userStatus) => {
+  const signUp = async (email, password, name, surname, gender) => {
     const result = await Auth.signUp({
       username: email,
       password,
@@ -133,7 +133,8 @@ const AuthProvider = ({ children }) => {
         email,
       },
     });
-    await API.graphql({
+    console.log(result);
+    const user = await API.graphql({
       query: createUserMutation,
       variables: {
         input: {
@@ -142,10 +143,11 @@ const AuthProvider = ({ children }) => {
           surname: surname,
           gender: gender,
           email: email,
-          phone: phone,
+          // phone: phone,
         },
       },
     });
+    console.log(user);
     return result;
   };
 
