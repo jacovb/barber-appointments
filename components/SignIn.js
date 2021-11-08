@@ -1,14 +1,12 @@
 import { Auth } from "aws-amplify";
 import SocialSignIn from "./SocialSignIn";
 import Input from "./Input";
-import { useRouter } from "next/router";
 import { useContext, useState } from "react";
 import { AuthContext } from "../context/AuthContext";
 
 export default function SignIn({ setAuthState }) {
   const authContext = useContext(AuthContext);
   const [formState, setFormState] = useState(null);
-  const router = useRouter();
 
   function onChange(e) {
     setFormState({ ...formState, [e.target.name]: e.target.value });

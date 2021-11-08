@@ -20,6 +20,7 @@ export default function SignUp({ setAuthState }) {
           data.gender,
           data.phoneNumber
         );
+        setAuthState("verifySignUp");
       } catch (err) {
         setErrorMessage(err.message);
       }

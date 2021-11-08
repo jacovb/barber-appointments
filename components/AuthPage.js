@@ -2,6 +2,7 @@ import { useState } from "react";
 import "../src/configureAmplify";
 import SignIn from "./SignIn";
 import SignUp from "./signUp";
+import VerifySignUp from "./VerifySignUp";
 
 export default function AuthPage() {
   const [authState, setAuthState] = useState("signIn");
@@ -13,6 +14,9 @@ export default function AuthPage() {
           <div className="bg-white py-14 px-16 shadow-form rounded">
             {authState === "signIn" && <SignIn setAuthState={setAuthState} />}
             {authState === "signUp" && <SignUp setAuthState={setAuthState} />}
+            {authState === "verifySignUp" && (
+              <VerifySignUp setAuthState={setAuthState} />
+            )}
           </div>
         </div>
       </div>
