@@ -161,6 +161,7 @@ const AuthProvider = ({ children }) => {
     try {
       const result = await Auth.signIn(email, password);
       setIsSignedIn(true);
+      console.log(result);
       return result;
     } catch (err) {
       setIsSignedIn(false);

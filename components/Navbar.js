@@ -1,8 +1,10 @@
-import React from "react";
+import React, { useContext } from "react";
 import Link from "next/link";
-import { Auth } from "aws-amplify";
+import { AuthContext } from "../context/AuthContext";
 
 export default function Navbar() {
+  const authContext = useContext(AuthContext);
+
   return (
     <nav className="py-4 px-12 border-b border-gray-300">
       <Link href="/">
@@ -14,7 +16,7 @@ export default function Navbar() {
       <Link href="/payment">
         <a className="ml-4">Payment</a>
       </Link>
-      <button onClick={() => Auth.signOut()}>Sign Out</button>
+      <button onClick={() => authContext.signOut()}>Sign Out</button>
     </nav>
   );
 }

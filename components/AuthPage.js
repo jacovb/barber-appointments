@@ -3,6 +3,7 @@ import "../src/configureAmplify";
 import SignIn from "./SignIn";
 import SignUp from "./signUp";
 import VerifySignUp from "./VerifySignUp";
+import ForgotPassword from "./ForgotPassword";
 
 export default function AuthPage() {
   const [authState, setAuthState] = useState("signIn");
@@ -16,6 +17,9 @@ export default function AuthPage() {
             {authState === "signUp" && <SignUp setAuthState={setAuthState} />}
             {authState === "verifySignUp" && (
               <VerifySignUp setAuthState={setAuthState} />
+            )}
+            {authState === "forgotPassword" && (
+              <ForgotPassword setAuthState={setAuthState} />
             )}
           </div>
         </div>

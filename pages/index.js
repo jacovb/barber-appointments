@@ -1,6 +1,5 @@
 import { useContext } from "react";
 import { AuthContext } from "../context/AuthContext";
-import { Auth } from "aws-amplify";
 
 export default function Home() {
   const authContext = useContext(AuthContext);
@@ -11,7 +10,7 @@ export default function Home() {
       <button
         className="text-white w-full mt-10 bg-pink-600 p-3 rounded"
         onClick={() => {
-          Auth.signOut();
+          authContext.signOut();
         }}
       >
         Sign Out
