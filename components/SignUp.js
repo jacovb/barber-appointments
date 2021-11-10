@@ -2,7 +2,7 @@ import { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
 import { AuthContext } from "../context/AuthContext";
 
-export default function SignUp({ setAuthState }) {
+export default function SignUp({ setAuthState, setTempEmail }) {
   const authContext = useContext(AuthContext);
   const [errorMessage, setErrorMessage] = useState("");
   const { register, handleSubmit } = useForm();
@@ -20,6 +20,7 @@ export default function SignUp({ setAuthState }) {
         data.gender
       );
       setAuthState("verifySignUp");
+      setTempEmail(data.email);
     } catch (err) {
       setErrorMessage(err.message);
     }
@@ -31,7 +32,7 @@ export default function SignUp({ setAuthState }) {
     <div>
       <p className="text-3xl font-black">Sign up for an Account</p>
       <form onSubmit={handleSubmit(onSubmit)} className="signin-form">
-        <div className="mt-10">
+        <div className="mt-6">
           <label htmlFor="name" className="text-sm">
             Name:
           </label>
@@ -53,19 +54,41 @@ export default function SignUp({ setAuthState }) {
             autoComplete="off"
           />
         </div>
-        <select
-          {...register("gender", { required: true })}
-          className="text-sm"
-          id="gender"
-        >
-          <option value="" disabled hidden>
-            -- Select Gender --
-          </option>
-          <option value="Male">Male</option>
-          <option value="Female">Female</option>
-          <option value="Other">Other</option>
-        </select>
-        <div>
+        <div className="mt-4">
+          <label htmlFor="gender" className="text-sm">
+            Gender:
+          </label>
+
+          <input
+            {...register("gender", { required: true })}
+            type="radio"
+            value="Male"
+          />
+          <input
+            {...register("gender", { required: true })}
+            type="radio"
+            value="Female"
+          />
+          <input
+            {...register("gender", { required: true })}
+            type="radio"
+            value="Other"
+          />
+
+          {/* <select
+            {...register("gender", { required: true })}
+            className="outline-none border-gray-300 border rounded p-2 mt-3 w-full focus:shadow-inputfocus focus:border-white"
+            id="gender"
+          >
+            <option value="" disabled hidden>
+              -- Select Gender --
+            </option>
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+            <option value="Other">Other</option>
+          </select> */}
+        </div>
+        <div className="mt-4">
           <label htmlFor="email" className="text-sm">
             Email:
           </label>
@@ -76,7 +99,7 @@ export default function SignUp({ setAuthState }) {
             autoComplete="off"
           />
         </div>
-        <div>
+        <div className="mt-4">
           <label htmlFor="password" className="text-sm">
             Password:
           </label>
@@ -94,10 +117,10 @@ export default function SignUp({ setAuthState }) {
           value="Sign Up"
           className="text-white w-full mt-6 bg-pink-600 p-3 rounded cursor-pointer"
         />
-        <p>
+        <p className="mt-8 text-sm font-light">
           Already Signed Up?
           <span
-            className="cursor-pointer"
+            className="cursor-pointer text-pink-600 ml-2"
             onClick={() => setAuthState("signIn")}
           >
             Sign In

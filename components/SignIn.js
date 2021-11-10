@@ -60,7 +60,7 @@ export default function SignIn({ setAuthState }) {
       </form>
 
       <SocialSignIn />
-      <p className="mt-12 text-sm font-light">
+      <p className="mt-8 text-sm font-light">
         Don't have an account?
         <span
           onClick={() => setAuthState("signUp")}
