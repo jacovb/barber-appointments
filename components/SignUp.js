@@ -8,9 +8,6 @@ export default function SignUp({ setAuthState, setTempEmail }) {
   const { register, handleSubmit } = useForm();
 
   const onSubmit = async (data) => {
-    // if (data.password !== data.confirmPassword) {
-    //   setErrorMessage("Passwords do not match");
-    // } else {
     try {
       await authContext.signUp(
         data.email,
@@ -24,7 +21,6 @@ export default function SignUp({ setAuthState, setTempEmail }) {
     } catch (err) {
       setErrorMessage(err.message);
     }
-    // }
     console.log(data);
   };
 
@@ -55,38 +51,50 @@ export default function SignUp({ setAuthState, setTempEmail }) {
           />
         </div>
         <div className="mt-4">
-          <label htmlFor="gender" className="text-sm">
+          <label htmlFor="gender" className="text-sm w-full">
             Gender:
           </label>
 
-          <input
-            {...register("gender", { required: true })}
-            type="radio"
-            value="Male"
-          />
-          <input
-            {...register("gender", { required: true })}
-            type="radio"
-            value="Female"
-          />
-          <input
-            {...register("gender", { required: true })}
-            type="radio"
-            value="Other"
-          />
+          <div className="flex flex-row justify-around items-center text-align p-2 mt-3 border-gray-300 border rounded">
+            <div>
+              <input
+                {...register("gender", { required: true })}
+                type="radio"
+                value="Male"
+                id="male"
+                className="form-radio border-gray-300 h-5 w-5"
+              />
+              <label htmlFor="male" className="text-sm ml-2">
+                Male
+              </label>
+            </div>
 
-          {/* <select
-            {...register("gender", { required: true })}
-            className="outline-none border-gray-300 border rounded p-2 mt-3 w-full focus:shadow-inputfocus focus:border-white"
-            id="gender"
-          >
-            <option value="" disabled hidden>
-              -- Select Gender --
-            </option>
-            <option value="Male">Male</option>
-            <option value="Female">Female</option>
-            <option value="Other">Other</option>
-          </select> */}
+            <div>
+              <input
+                {...register("gender", { required: true })}
+                type="radio"
+                value="Female"
+                id="female"
+                className="form-radio h-5 w-5"
+              />
+              <label htmlFor="female" className="text-sm ml-2">
+                Female
+              </label>
+            </div>
+
+            <div>
+              <input
+                {...register("gender", { required: true })}
+                type="radio"
+                value="Other"
+                id="other"
+                className="form-radio h-5 w-5"
+              />
+              <label htmlFor="other" className="text-sm ml-2">
+                Other
+              </label>
+            </div>
+          </div>
         </div>
         <div className="mt-4">
           <label htmlFor="email" className="text-sm">
