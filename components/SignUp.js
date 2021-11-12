@@ -55,14 +55,14 @@ export default function SignUp({ setAuthState, setTempEmail }) {
             Gender:
           </label>
 
-          <div className="flex flex-row justify-around items-center text-align p-2 mt-3 border-gray-300 border rounded">
+          <div className="flex flex-row justify-between items-center text-align p-2 mt-3">
             <div>
               <input
                 {...register("gender", { required: true })}
                 type="radio"
                 value="Male"
                 id="male"
-                className="form-radio border-gray-300 h-5 w-5"
+                className="form-radio border-gray-300 border-1 focus:ring-1 focus:ring-pink-600 text-pink-600 h-5 w-5"
               />
               <label htmlFor="male" className="text-sm ml-2">
                 Male
@@ -75,7 +75,7 @@ export default function SignUp({ setAuthState, setTempEmail }) {
                 type="radio"
                 value="Female"
                 id="female"
-                className="form-radio h-5 w-5"
+                className="form-radio border-gray-300 border-1 focus:ring-1 focus:ring-pink-600 text-pink-600 h-5 w-5"
               />
               <label htmlFor="female" className="text-sm ml-2">
                 Female
@@ -88,7 +88,7 @@ export default function SignUp({ setAuthState, setTempEmail }) {
                 type="radio"
                 value="Other"
                 id="other"
-                className="form-radio h-5 w-5"
+                className="form-radio border-gray-300 border-1 focus:ring-1 focus:ring-pink-600 text-pink-600 h-5 w-5"
               />
               <label htmlFor="other" className="text-sm ml-2">
                 Other

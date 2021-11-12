@@ -11,10 +11,10 @@ export default function AuthPage() {
   const [tempEmail, setTempEmail] = useState("");
 
   return (
-    <div className="bg-gray-50 min-h-screen">
+    <div className="bg-neumorph min-h-screen">
       <div className="flex flex-col items-center">
         <div className="max-w-full sm:w-540 mt-14">
-          <div className="bg-white py-14 px-16 shadow-form rounded">
+          <div className="bg-neumorph py-14 px-16 shadow-neumorph rounded-2xl">
             {authState === "signIn" && <SignIn setAuthState={setAuthState} />}
             {authState === "signUp" && (
               <SignUp setAuthState={setAuthState} setTempEmail={setTempEmail} />
