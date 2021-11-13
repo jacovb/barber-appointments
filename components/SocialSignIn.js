@@ -8,7 +8,7 @@ export default function SocialSignIn() {
         className="mt-10 focus:outline-none"
         onClick={() => Auth.federatedSignIn({ provider: "Google" })}
       >
-        <div className="flex border border-gray-300 p-2 rounded-full items-center justify-center">
+        <div className="shadow-neumorph bg-neumorph flex p-2 rounded-full items-center justify-center">
           <FaGoogle size="38" className="text-red-600" />
           <p className="ml-3">Sign in with Google</p>
         </div>

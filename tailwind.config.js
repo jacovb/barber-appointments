@@ -9,7 +9,9 @@ module.exports = {
       },
       boxShadow: {
         form: "0 15px 35px 0 rgba(60,66,87,.08), 0 5px 15px 0 rgba(0,0,0,.12)",
-        neumorph: "20px 20px 60px #bcbdc0, -20px -20px 60px #ffffff",
+        neumorph: "5px 5px 5px 0 #bcbdc0, -5px -5px 5px 0 #ffffff",
+        neumorphInset:
+          "5px 5px 5px 0 #bcbdc0 inset, -5px -5px 5px 0 #ffffff inset",
         inputfocus: "0 0 0 2px #F472B6",
       },
       backgroundColor: {
