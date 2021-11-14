@@ -9,13 +9,14 @@ module.exports = {
       },
       boxShadow: {
         form: "0 15px 35px 0 rgba(60,66,87,.08), 0 5px 15px 0 rgba(0,0,0,.12)",
-        neumorph: "5px 5px 5px 0 #bcbdc0, -5px -5px 5px 0 #ffffff",
+        neumorph: "5px 5px 5px #1e1f1f, -5px -5px 5px #464749",
         neumorphInset:
-          "5px 5px 5px 0 #bcbdc0 inset, -5px -5px 5px 0 #ffffff inset",
+          "5px 5px 5px 0 #1e1f1f inset, -5px -5px 5px 0 #464749 inset",
         inputfocus: "0 0 0 2px #F472B6",
       },
       backgroundColor: {
-        neumorph: "#ebecf0",
+        neumorph: "#323334",
+        brass: "#AF7757",
       },
     },
   },

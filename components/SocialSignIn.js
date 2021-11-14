@@ -10,7 +10,7 @@ export default function SocialSignIn() {
       >
         <div className="shadow-neumorph bg-neumorph flex p-2 rounded-full items-center justify-center">
           <FaGoogle size="38" className="text-red-600" />
-          <p className="ml-3">Sign in with Google</p>
+          <p className="ml-3 text-white">Sign in with Google</p>
         </div>
       </button>
     </div>

@@ -19,34 +19,34 @@ export default function SignIn({ setAuthState }) {
 
   return (
     <div>
-      <p className="text-3xl font-black">Sign in to your account</p>
+      <p className="text-3xl font-black text-white">Sign in to your account</p>
       <form onSubmit={handleSubmit(onSubmit)} className="signin-form">
         <div className="mt-10">
-          <label htmlFor="email" className="text-sm">
+          <label htmlFor="email" className="text-sm text-white">
             Email
           </label>
           <input
             {...register("email", { required: true })}
-            className="shadow-neumorphInset bg-gray-100 outline-none rounded p-2 mt-3 w-full focus:shadow-inputfocus focus:border-white"
+            className="shadow-neumorphInset bg-neumorph outline-none rounded p-2 mt-3 w-full focus:ring-1 focus:ring-red-700 text-white"
             id="name"
             autoComplete="off"
           />
         </div>
 
         <div className="mt-4">
-          <label htmlFor="password" className="text-sm">
+          <label htmlFor="password" className="text-sm text-white">
             Password
             <span
               onClick={() => setAuthState("forgotPassword")}
               role="button"
-              className="text-sm ml-8 sm:ml-56 text-pink-600 cursor-pointer"
+              className="text-sm ml-8 sm:ml-60 text-red-500 cursor-pointer"
             >
               Forgot Password?
             </span>
           </label>
           <input
             {...register("password", { required: true })}
-            className="shadow-neumorphInset bg-gray-100 outline-none border-none rounded p-2 mt-3 w-full focus:shadow-inputfocus focus:border-white"
+            className="shadow-neumorphInset bg-neumorph outline-none border-none rounded p-2 mt-3 w-full focus:ring-1 focus:ring-red-700 text-white"
             id="password"
             autoComplete="off"
             type="password"
@@ -55,17 +55,17 @@ export default function SignIn({ setAuthState }) {
         <input
           type="submit"
           value="Sign In"
-          className="shadow-neumorph text-white w-full mt-6 bg-pink-600 p-3 rounded cursor-pointer"
+          className="shadow-neumorph text-white w-full mt-6 bg-brass p-3 rounded cursor-pointer"
         />
       </form>
 
       <SocialSignIn />
-      <p className="mt-8 text-sm font-light">
+      <p className="mt-8 text-sm font-light text-white">
         Don't have an account?
         <span
           onClick={() => setAuthState("signUp")}
           role="button"
-          className="cursor-pointer text-pink-600 ml-2"
+          className="cursor-pointer text-red-500 text-sm ml-2"
         >
           Sign Up
         </span>
