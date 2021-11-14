@@ -22,15 +22,15 @@ export default function VerifySignUp({
 
   return (
     <div>
-      <p className="text-3xl font-black">Verify your Account</p>
+      <p className="text-3xl text-white font-black">Verify your Account</p>
       <form onSubmit={handleSubmit(onSubmit)} className="signin-form">
         <div className="mt-10">
-          <label htmlFor="verificationCode" className="text-sm">
+          <label htmlFor="verificationCode" className="text-sm text-white">
             Verification Code:
           </label>
           <input
             {...register("verificationCode", { required: true })}
-            className="outline-none border-gray-300 border rounded p-2 mt-3 w-full focus:shadow-inputfocus focus:border-white"
+            className="shadow-neumorphInset bg-neumorph outline-none rounded-md p-2 mt-3 w-full focus:ring-1 focus:ring-red-700 text-white"
             id="surname"
             autoComplete="off"
           />
@@ -39,12 +39,12 @@ export default function VerifySignUp({
         <input
           type="submit"
           value="Verify"
-          className="text-white w-full mt-6 bg-pink-600 p-3 rounded"
+          className="shadow-neumorph text-xl font-medium text-white w-full mt-8 bg-brass p-3 rounded-md cursor-pointer"
         />
-        <p className="mt-8 text-sm font-light">
+        <p className="mt-8 text-sm text-white font-light">
           Already Signed Up?
           <span
-            className="cursor-pointer text-pink-600 ml-2"
+            className="cursor-pointer text-red-500 ml-2"
             onClick={() => setAuthState("signIn")}
           >
             Sign In

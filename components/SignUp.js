@@ -26,32 +26,32 @@ export default function SignUp({ setAuthState, setTempEmail }) {
 
   return (
     <div>
-      <p className="text-3xl font-black">Sign up for an Account</p>
+      <p className="text-3xl text-white font-black">Sign up for an Account</p>
       <form onSubmit={handleSubmit(onSubmit)} className="signin-form">
         <div className="mt-6">
-          <label htmlFor="name" className="text-sm">
+          <label htmlFor="name" className="text-sm text-white">
             Name:
           </label>
           <input
             {...register("name", { required: true })}
-            className="outline-none border-gray-300 border rounded p-2 mt-3 w-full focus:shadow-inputfocus focus:border-white"
+            className="shadow-neumorphInset bg-neumorph outline-none rounded-md p-2 mt-3 w-full focus:ring-1 focus:ring-red-700 text-white"
             id="name"
             autoComplete="off"
           />
         </div>
         <div className="mt-4">
-          <label htmlFor="surname" className="text-sm">
+          <label htmlFor="surname" className="text-sm text-white">
             Surname:
           </label>
           <input
             {...register("surname", { required: true })}
-            className="outline-none border-gray-300 border rounded p-2 mt-3 w-full focus:shadow-inputfocus focus:border-white"
+            className="shadow-neumorphInset bg-neumorph outline-none rounded-md p-2 mt-3 w-full focus:ring-1 focus:ring-red-700 text-white"
             id="surname"
             autoComplete="off"
           />
         </div>
         <div className="mt-4">
-          <label htmlFor="gender" className="text-sm w-full">
+          <label htmlFor="gender" className="text-sm w-full text-white">
             Gender:
           </label>
 
@@ -62,9 +62,9 @@ export default function SignUp({ setAuthState, setTempEmail }) {
                 type="radio"
                 value="Male"
                 id="male"
-                className="form-radio border-gray-300 border-1 focus:ring-1 focus:ring-pink-600 text-pink-600 h-5 w-5"
+                className="shadow-neumorph bg-neumorph form-radio text-white focus:ring-1 focus:ring-red-700 text-red-700 h-8 w-8"
               />
-              <label htmlFor="male" className="text-sm ml-2">
+              <label htmlFor="male" className="text-sm ml-2 text-white">
                 Male
               </label>
             </div>
@@ -75,9 +75,9 @@ export default function SignUp({ setAuthState, setTempEmail }) {
                 type="radio"
                 value="Female"
                 id="female"
-                className="form-radio border-gray-300 border-1 focus:ring-1 focus:ring-pink-600 text-pink-600 h-5 w-5"
+                className="shadow-neumorph bg-neumorph form-radio text-white focus:ring-1 focus:ring-red-700 text-red-700 h-8 w-8"
               />
-              <label htmlFor="female" className="text-sm ml-2">
+              <label htmlFor="female" className="text-sm ml-2 text-white">
                 Female
               </label>
             </div>
@@ -88,32 +88,32 @@ export default function SignUp({ setAuthState, setTempEmail }) {
                 type="radio"
                 value="Other"
                 id="other"
-                className="form-radio border-gray-300 border-1 focus:ring-1 focus:ring-pink-600 text-pink-600 h-5 w-5"
+                className="shadow-neumorph bg-neumorph form-radio text-white focus:ring-1 focus:ring-red-700 text-red-700 h-8 w-8"
               />
-              <label htmlFor="other" className="text-sm ml-2">
+              <label htmlFor="other" className="text-sm ml-2 text-white">
                 Other
               </label>
             </div>
           </div>
         </div>
         <div className="mt-4">
-          <label htmlFor="email" className="text-sm">
+          <label htmlFor="email" className="text-sm text-white">
             Email:
           </label>
           <input
             {...register("email", { required: true })}
-            className="outline-none border-gray-300 border rounded p-2 mt-3 w-full focus:shadow-inputfocus focus:border-white"
+            className="shadow-neumorphInset bg-neumorph outline-none rounded-md p-2 mt-3 w-full focus:ring-1 focus:ring-red-700 text-white"
             id="email"
             autoComplete="off"
           />
         </div>
         <div className="mt-4">
-          <label htmlFor="password" className="text-sm">
+          <label htmlFor="password" className="text-sm text-white">
             Password:
           </label>
           <input
             {...register("password", { required: true })}
-            className="outline-none border-gray-300 border rounded p-2 mt-3 w-full focus:shadow-inputfocus focus:border-white"
+            className="shadow-neumorphInset bg-neumorph outline-none border-none rounded-md p-2 mt-3 w-full focus:ring-1 focus:ring-red-700 text-white"
             id="password"
             autoComplete="off"
             type="password"
@@ -123,12 +123,12 @@ export default function SignUp({ setAuthState, setTempEmail }) {
         <input
           type="submit"
           value="Sign Up"
-          className="text-white w-full mt-6 bg-pink-600 p-3 rounded cursor-pointer"
+          className="shadow-neumorph text-xl font-medium text-white w-full mt-8 bg-brass p-3 rounded-md cursor-pointer"
         />
-        <p className="mt-8 text-sm font-light">
+        <p className="mt-8 text-sm font-light text-white">
           Already Signed Up?
           <span
-            className="cursor-pointer text-pink-600 ml-2"
+            className="cursor-pointer text-red-500 ml-2"
             onClick={() => setAuthState("signIn")}
           >
             Sign In

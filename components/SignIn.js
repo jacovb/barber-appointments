@@ -27,7 +27,7 @@ export default function SignIn({ setAuthState }) {
           </label>
           <input
             {...register("email", { required: true })}
-            className="shadow-neumorphInset bg-neumorph outline-none rounded p-2 mt-3 w-full focus:ring-1 focus:ring-red-700 text-white"
+            className="shadow-neumorphInset bg-neumorph outline-none rounded-md p-2 mt-3 w-full focus:ring-1 focus:ring-red-700 text-white"
             id="name"
             autoComplete="off"
           />
@@ -46,7 +46,7 @@ export default function SignIn({ setAuthState }) {
           </label>
           <input
             {...register("password", { required: true })}
-            className="shadow-neumorphInset bg-neumorph outline-none border-none rounded p-2 mt-3 w-full focus:ring-1 focus:ring-red-700 text-white"
+            className="shadow-neumorphInset bg-neumorph outline-none border-none rounded-md p-2 mt-3 w-full focus:ring-1 focus:ring-red-700 text-white"
             id="password"
             autoComplete="off"
             type="password"
@@ -55,7 +55,7 @@ export default function SignIn({ setAuthState }) {
         <input
           type="submit"
           value="Sign In"
-          className="shadow-neumorph text-white w-full mt-6 bg-brass p-3 rounded cursor-pointer"
+          className="shadow-neumorph text-xl font-medium text-white w-full mt-8 bg-brass p-3 rounded-md cursor-pointer"
         />
       </form>
 
