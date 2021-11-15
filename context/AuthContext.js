@@ -2,6 +2,8 @@ import React from "react";
 
 import { Auth, API } from "aws-amplify";
 
+import { getUser } from "../src/graphql/queries";
+
 import { createUser as createUserMutation } from "../src/graphql/mutations";
 
 const defaultState = {

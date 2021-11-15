@@ -5,16 +5,11 @@ export default function Home() {
   const authContext = useContext(AuthContext);
 
   return (
-    <>
+    <div className="bg-neumorph min-h-screen text-white">
       <p className="text-xl">Welcome, {authContext.userInfo.email}</p>
-      <button
-        className="text-white w-full mt-10 bg-pink-600 p-3 rounded"
-        onClick={() => {
-          authContext.signOut();
-        }}
-      >
-        Sign Out
-      </button>
-    </>
+      {console.log(authContext.userInfo)}
+      {console.log(authContext.currentUserDetails)}
+      {console.log(authContext.isSignedIn)}
+    </div>
   );
 }

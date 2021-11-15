@@ -1,12 +1,10 @@
 import SocialSignIn from "./SocialSignIn";
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import { useForm } from "react-hook-form";
 import { AuthContext } from "../context/AuthContext";
-import Input from "./Input";
 
 export default function SignIn({ setAuthState }) {
   const authContext = useContext(AuthContext);
-  const [formState, setFormState] = useState(null);
   const { register, handleSubmit } = useForm();
 
   const onSubmit = async (data) => {
