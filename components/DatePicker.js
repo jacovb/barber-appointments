@@ -1,13 +1,16 @@
 import { useState } from "react";
 import Calendar from "react-calendar";
-// import "react-calendar/dist/Calendar.css";
 
 export default function DatePicker() {
   const [date, setDate] = useState(new Date());
 
   return (
     <>
-      <Calendar onChange={setDate} value={date} />
+      <Calendar
+        onChange={setDate}
+        value={date}
+        className="bg-neumorph shadow-neumorph px-4 py-4 mx-8 my-8 w-6/12 rounded-lg border-0"
+      />
       <p>Selected Date: {date.toDateString()}</p>
     </>
   );

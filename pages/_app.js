@@ -1,4 +1,5 @@
 import "../styles/globals.css";
+import "../styles/Calendar.css";
 import Navbar from "../components/Navbar";
 import AuthPage from "../components/AuthPage";
 import AuthProvider, {
