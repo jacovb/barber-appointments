@@ -7,7 +7,7 @@ export default function Home() {
 
   return (
     <div className="bg-neumorph min-h-screen text-white">
-      <p className="text-xl">
+      <p className="text-xl flex justify-center">
         Welcome,{" "}
         {authContext.currentUserDetails.name || authContext.userInfo.email}
       </p>

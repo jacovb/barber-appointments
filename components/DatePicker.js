@@ -5,7 +5,7 @@ export default function DatePicker() {
   const [date, setDate] = useState(new Date());
 
   return (
-    <>
+    <div className="flex flex-col items-center">
       <Calendar
         onChange={setDate}
         value={date}
@@ -15,6 +15,6 @@ export default function DatePicker() {
         className="bg-neumorph shadow-neumorph px-4 py-4 mx-8 my-8 w-6/12 rounded-lg border-0"
       />
       <p>Selected Date: {date.toDateString()}</p>
-    </>
+    </div>
   );
 }
