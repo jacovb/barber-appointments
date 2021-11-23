@@ -100,11 +100,16 @@
 }
 
 .react-calendar__tile--hasActive {
-  background: #76baff;
+  background: rgba(185, 28, 28);
+  color: white;
+  border-radius: 0.25rem;
+  box-shadow: 5px 5px 5px 0 #790005 inset, -5px -5px 5px 0 #ff000b inset;
 }
 .react-calendar__tile--hasActive:enabled:hover,
 .react-calendar__tile--hasActive:enabled:focus {
-  background: #a9d4ff;
+  background: rgba(185, 28, 28);
+  color: white;
+  border-radius: 0.25rem;
 }
 .react-calendar__tile--active {
   background: rgba(185, 28, 28);
