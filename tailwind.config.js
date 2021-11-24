@@ -12,6 +12,8 @@ module.exports = {
         neumorph: "5px 5px 5px #1e1f1f, -5px -5px 5px #464749",
         neumorphInset:
           "5px 5px 5px 0 #1e1f1f inset, -5px -5px 5px 0 #464749 inset",
+        neumorphInsetRed:
+          "5px 5px 5px 0 #790005 inset, -5px -5px 5px 0 #ff000b inset",
         inputfocus: "0 0 0 2px #F472B6",
       },
       backgroundColor: {
