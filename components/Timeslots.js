@@ -29,16 +29,16 @@ export default function Timeslots() {
   const [timeSelect, setTimeSelect] = useState("");
 
   return (
-    <>
-      <div className="flex flex-row flex-wrap w-540 shadow-neumorph p-4 m-4 justify-center rounded-lg">
+    <div className="flex flex-col items-center">
+      <div className="flex flex-row flex-wrap max-w-full w-540 shadow-neumorph p-4 m-4 justify-center rounded-lg">
         {slots.map((timeslot, idx) => (
           <button
             key={idx}
             className={`${
               timeslot.start === timeSelect
                 ? "bg-red-700 shadow-neumorphInsetRed"
-                : null
-            } w-36 border border-red-700 px-1 py-1 mx-1 my-1 flex justify-center cursor-pointer rounded`}
+                : "hover:bg-hoverGrey hover:text-black"
+            } w-36 px-1 py-1 mx-1 my-1 flex justify-center cursor-pointer rounded`}
             onClick={() => setTimeSelect(timeslot.start)}
           >
             <p>{timeslot.start}</p>
@@ -46,6 +46,6 @@ export default function Timeslots() {
         ))}
       </div>
       <p>Selected Time: {timeSelect}</p>
-    </>
+    </div>
   );
 }

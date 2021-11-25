@@ -19,6 +19,7 @@ module.exports = {
       backgroundColor: {
         neumorph: "#323334",
         brass: "#AF7757",
+        hoverGrey: "#e6e6e6",
       },
     },
   },
