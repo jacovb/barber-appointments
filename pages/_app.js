@@ -6,6 +6,9 @@ import AuthProvider, {
   AuthIsSignedIn,
   AuthIsNotSignedIn,
 } from "../context/AuthContext";
+import BookingContextProvider, {
+  BookingContext,
+} from "../context/BookingContext";
 
 function MyApp({ Component, pageProps }) {
   return (
@@ -15,8 +18,10 @@ function MyApp({ Component, pageProps }) {
           <AuthPage />
         </AuthIsNotSignedIn>
         <AuthIsSignedIn>
-          <Navbar />
-          <Component {...pageProps} />
+          <BookingContextProvider>
+            <Navbar />
+            <Component {...pageProps} />
+          </BookingContextProvider>
         </AuthIsSignedIn>
       </AuthProvider>
     </div>

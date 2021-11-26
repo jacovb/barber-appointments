@@ -1,10 +1,12 @@
 import { useContext } from "react";
 import { AuthContext } from "../context/AuthContext";
+import { BookingContext } from "../context/BookingContext";
 import DatePicker from "../components/DatePicker";
 import Timeslots from "../components/Timeslots";
 
 export default function Home() {
   const authContext = useContext(AuthContext);
+  const bookingContext = useContext(BookingContext);
 
   return (
     <div className="bg-neumorph min-h-screen text-white pb-8">
@@ -14,9 +16,8 @@ export default function Home() {
       </p>
       <DatePicker />
       <Timeslots />
-      {console.log(authContext.userInfo)}
-      {console.log(authContext.currentUserDetails)}
-      {console.log(authContext.isSignedIn)}
+      {console.log(bookingContext.treatments)}
+      {console.log(bookingContext.currentUserDetails)}
     </div>
   );
 }
