@@ -18,6 +18,7 @@ export default function Home() {
       <Timeslots />
       {console.log(bookingContext.treatments)}
       {console.log(bookingContext.currentUserDetails)}
+      {console.log(bookingContext.dayBookings)}
     </div>
   );
 }

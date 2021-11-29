@@ -14,11 +14,18 @@ export const BookingContext = React.createContext();
 
 const BookingContextProvider = ({ children }) => {
   const [treatments, setTreatments] = useState();
+  const [selectedDate, setSelectedDate] = useState(new Date());
+  const [dayBookings, setDayBookings] = useState();
   const { currentUserDetails } = useContext(AuthContext);
 
   useEffect(() => {
     fetchTreatments();
+    fetchDayBookings(selectedDate);
   }, []);
+
+  useEffect(() => {
+    fetchDayBookings(selectedDate);
+  }, [selectedDate, setSelectedDate]);
 
   async function fetchTreatments() {
     try {
@@ -29,7 +36,22 @@ const BookingContextProvider = ({ children }) => {
     }
   }
 
+  async function fetchDayBookings(date) {
+    try {
+      const apiData = await API.graphql({
+        query: listBookings,
+        filter: { date: { contains: date.toISOString().split("T")[0] } },
+      });
+      setDayBookings(apiData.data.listBookings.items);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
   const state = {
+    selectedDate,
+    setSelectedDate,
+    dayBookings,
     treatments,
     currentUserDetails,
   };
