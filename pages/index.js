@@ -3,6 +3,7 @@ import { AuthContext } from "../context/AuthContext";
 import { BookingContext } from "../context/BookingContext";
 import DatePicker from "../components/DatePicker";
 import Timeslots from "../components/Timeslots";
+import BookingForm from "../components/BookingForm";
 
 export default function Home() {
   const authContext = useContext(AuthContext);
@@ -16,6 +17,7 @@ export default function Home() {
       </p>
       <DatePicker />
       <Timeslots />
+      <BookingForm />
       {console.log(bookingContext.treatments)}
       {console.log(bookingContext.currentUserDetails)}
       {console.log(bookingContext.dayBookings)}
