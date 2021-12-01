@@ -9,19 +9,21 @@ import {
   updateBooking as updateBookingMutation,
   deleteBooking as deleteBookingMutation,
 } from "../src/graphql/mutations";
+import { data } from "autoprefixer";
 
 export const BookingContext = React.createContext();
 
 const startBookingForm = {
   date: new Date().toISOString().split("T")[0],
   time: "",
-  user: "",
-  treatment: "",
+  bookingUserId: "",
+  bookingTreatmentId: "",
 };
 
 const BookingContextProvider = ({ children }) => {
   const [treatments, setTreatments] = useState([]);
   const [selectedDate, setSelectedDate] = useState(new Date());
+  const [timeSelect, setTimeSelect] = useState("");
   const [dayBookings, setDayBookings] = useState();
   const [bookingData, setBookingData] = useState(startBookingForm);
   const { currentUserDetails } = useContext(AuthContext);
@@ -33,7 +35,20 @@ const BookingContextProvider = ({ children }) => {
 
   useEffect(() => {
     fetchDayBookings(selectedDate);
+    setBookingData({
+      ...bookingData,
+      date: selectedDate.toISOString().split("T")[0],
+    });
   }, [selectedDate, setSelectedDate]);
+
+  useEffect(() => {
+    setBookingData({
+      ...bookingData,
+      time: timeSelect,
+      bookingUserId: currentUserDetails.id,
+      paid: false,
+    });
+  }, [timeSelect, setTimeSelect]);
 
   async function fetchTreatments() {
     try {
@@ -57,11 +72,11 @@ const BookingContextProvider = ({ children }) => {
   }
 
   async function createBooking() {
-    setBookingData({
-      ...bookingData,
-      user: currentUserDetails.id,
-      date: selectedDate,
-    });
+    // setBookingData({
+    //   ...bookingData,
+    //   user: currentUserDetails.id,
+    // });
+    console.log("Booking data", bookingData);
     try {
       await API.graphql({
         query: createBookingMutation,
@@ -80,6 +95,8 @@ const BookingContextProvider = ({ children }) => {
   const state = {
     selectedDate,
     setSelectedDate,
+    timeSelect,
+    setTimeSelect,
     dayBookings,
     treatments,
     currentUserDetails,

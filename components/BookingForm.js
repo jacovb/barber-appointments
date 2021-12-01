@@ -13,9 +13,10 @@ export default function BookingForm() {
             type="text"
             id="treatmentSelect"
             value={bookingContext.bookingData.treatment}
-            name="treatment"
+            name="bookingTreatmentId"
             required
             onChange={bookingContext.handleBookingEntry}
+            className="text-black text-sm ml-4"
           >
             <option value="" hidden disabled></option>
             {bookingContext.treatments.map((treatment, idx) => (
@@ -25,6 +26,14 @@ export default function BookingForm() {
             ))}
           </select>
         </div>
+        <button
+          onClick={() => {
+            bookingContext.createBooking();
+            console.log("Booking Button Pressed");
+          }}
+        >
+          Book
+        </button>
       </form>
       {console.log("Booking Form: ", bookingContext.bookingData)}
     </>

@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
+import { BookingContext } from "../context/BookingContext";
 
 const slots = [
   { start: "9:00", end: "9:30" },
@@ -26,7 +27,7 @@ const slots = [
 ];
 
 export default function Timeslots() {
-  const [timeSelect, setTimeSelect] = useState("");
+  const bookingContext = useContext(BookingContext);
 
   return (
     <div className="flex flex-col items-center">
@@ -35,17 +36,17 @@ export default function Timeslots() {
           <button
             key={idx}
             className={`${
-              timeslot.start === timeSelect
+              timeslot.start === bookingContext.timeSelect
                 ? "bg-red-700 shadow-neumorphInsetRed"
                 : "hover:bg-hoverGrey hover:text-black"
             } w-36 px-1 py-1 mx-1 my-1 flex justify-center cursor-pointer rounded`}
-            onClick={() => setTimeSelect(timeslot.start)}
+            onClick={() => bookingContext.setTimeSelect(timeslot.start)}
           >
             <p>{timeslot.start}</p>
           </button>
         ))}
       </div>
-      <p>Selected Time: {timeSelect}</p>
+      <p>Selected Time: {bookingContext.timeSelect}</p>
     </div>
   );
 }
