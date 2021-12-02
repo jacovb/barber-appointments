@@ -20,7 +20,6 @@ export default function Home() {
       <BookingForm />
       {console.log(bookingContext.treatments)}
       {console.log(bookingContext.currentUserDetails)}
-      {console.log(bookingContext.dayBookings)}
     </div>
   );
 }

@@ -59,11 +59,16 @@ const BookingContextProvider = ({ children }) => {
     }
   }
 
-  async function fetchDayBookings(date) {
+  async function fetchDayBookings(searchDate) {
+    let dateFilter = {
+      date: {
+        contains: searchDate.toISOString().split("T")[0],
+      },
+    };
     try {
       const apiData = await API.graphql({
         query: listBookings,
-        filter: { date: { contains: date.toISOString().split("T")[0] } },
+        variables: { filter: dateFilter },
       });
       setDayBookings(apiData.data.listBookings.items);
     } catch (error) {

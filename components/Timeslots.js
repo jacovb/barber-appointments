@@ -28,14 +28,21 @@ const slots = [
 
 export default function Timeslots() {
   const bookingContext = useContext(BookingContext);
+  let bookedSlots = bookingContext.dayBookings.map(
+    (booking, key) => booking.time
+  );
 
   return (
     <div className="flex flex-col items-center">
       <div className="flex flex-row flex-wrap max-w-full w-540 shadow-neumorph p-4 m-4 justify-center rounded-lg">
+        {console.log("Booked Timeslots:", bookedSlots)}
         {slots.map((timeslot, idx) => (
           <button
             key={idx}
             className={`${
+              // bookedSlots.includes(timeslot.start)
+              // ? // styling if timeslot disabled
+              // : // styling below
               timeslot.start === bookingContext.timeSelect
                 ? "bg-red-700 shadow-neumorphInsetRed"
                 : "hover:bg-hoverGrey hover:text-black"
