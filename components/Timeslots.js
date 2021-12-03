@@ -40,14 +40,12 @@ export default function Timeslots() {
           <button
             key={idx}
             className={`${
-              // bookedSlots.includes(timeslot.start)
-              // ? // styling if timeslot disabled
-              // : // styling below
               timeslot.start === bookingContext.timeSelect
                 ? "bg-red-700 shadow-neumorphInsetRed"
                 : "hover:bg-hoverGrey hover:text-black"
-            } w-36 px-1 py-1 mx-1 my-1 flex justify-center cursor-pointer rounded`}
+            } w-36 px-1 py-1 mx-1 my-1 flex justify-center cursor-pointer rounded disabled:text-disabled`}
             onClick={() => bookingContext.setTimeSelect(timeslot.start)}
+            disabled={bookedSlots.includes(timeslot.start) ? true : false}
           >
             <p>{timeslot.start}</p>
           </button>

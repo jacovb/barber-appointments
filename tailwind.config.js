@@ -7,6 +7,9 @@ module.exports = {
         540: "540px",
         780: "780px",
       },
+      textColor: {
+        disabled: "#505050",
+      },
       boxShadow: {
         form: "0 15px 35px 0 rgba(60,66,87,.08), 0 5px 15px 0 rgba(0,0,0,.12)",
         neumorph: "5px 5px 5px #1e1f1f, -5px -5px 5px #464749",
@@ -24,7 +27,9 @@ module.exports = {
     },
   },
   variants: {
-    extend: {},
+    extend: {
+      textColor: ["disabled"],
+    },
   },
   plugins: [require("@tailwindcss/forms")],
 };

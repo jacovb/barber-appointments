@@ -24,7 +24,7 @@ const BookingContextProvider = ({ children }) => {
   const [treatments, setTreatments] = useState([]);
   const [selectedDate, setSelectedDate] = useState(new Date());
   const [timeSelect, setTimeSelect] = useState("");
-  const [dayBookings, setDayBookings] = useState();
+  const [dayBookings, setDayBookings] = useState([]);
   const [bookingData, setBookingData] = useState(startBookingForm);
   const { currentUserDetails } = useContext(AuthContext);
 
@@ -39,6 +39,7 @@ const BookingContextProvider = ({ children }) => {
       ...bookingData,
       date: selectedDate.toISOString().split("T")[0],
     });
+    setTimeSelect("");
   }, [selectedDate, setSelectedDate]);
 
   useEffect(() => {
