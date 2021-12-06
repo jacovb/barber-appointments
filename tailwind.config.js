@@ -3,6 +3,9 @@ module.exports = {
   darkMode: false, // or 'media' or 'class'
   theme: {
     extend: {
+      width: {
+        450: "450px",
+      },
       spacing: {
         540: "540px",
         780: "780px",
@@ -29,6 +32,8 @@ module.exports = {
   variants: {
     extend: {
       textColor: ["disabled"],
+      backgroundColor: ["disabled"],
+      cursor: ["disabled"],
     },
   },
   plugins: [require("@tailwindcss/forms")],

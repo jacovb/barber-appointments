@@ -34,8 +34,7 @@ export default function Timeslots() {
 
   return (
     <div className="flex flex-col items-center">
-      <div className="flex flex-row flex-wrap max-w-full w-540 shadow-neumorph p-4 m-4 justify-center rounded-lg">
-        {console.log("Booked Timeslots:", bookedSlots)}
+      <div className="flex flex-row flex-wrap max-w-full w-450 shadow-neumorph p-4 m-4 justify-center rounded-lg">
         {slots.map((timeslot, idx) => (
           <button
             key={idx}
@@ -43,7 +42,7 @@ export default function Timeslots() {
               timeslot.start === bookingContext.timeSelect
                 ? "bg-red-700 shadow-neumorphInsetRed"
                 : "hover:bg-hoverGrey hover:text-black"
-            } w-36 px-1 py-1 mx-1 my-1 flex justify-center cursor-pointer rounded disabled:text-disabled`}
+            } w-32 px-1 py-1 mx-1 my-1 flex justify-center cursor-pointer rounded disabled:text-disabled disabled:bg-transparent disabled:cursor-not-allowed`}
             onClick={() => bookingContext.setTimeSelect(timeslot.start)}
             disabled={bookedSlots.includes(timeslot.start) ? true : false}
           >
@@ -51,7 +50,6 @@ export default function Timeslots() {
           </button>
         ))}
       </div>
-      <p>Selected Time: {bookingContext.timeSelect}</p>
     </div>
   );
 }

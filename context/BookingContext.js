@@ -34,6 +34,14 @@ const BookingContextProvider = ({ children }) => {
   }, []);
 
   useEffect(() => {
+    setBookingData({
+      ...bookingData,
+      bookingUserId: currentUserDetails.id,
+      paid: false,
+    });
+  }, [currentUserDetails]);
+
+  useEffect(() => {
     fetchDayBookings(selectedDate);
     setBookingData({
       ...bookingData,
@@ -46,8 +54,6 @@ const BookingContextProvider = ({ children }) => {
     setBookingData({
       ...bookingData,
       time: timeSelect,
-      bookingUserId: currentUserDetails.id,
-      paid: false,
     });
   }, [timeSelect, setTimeSelect]);
 
