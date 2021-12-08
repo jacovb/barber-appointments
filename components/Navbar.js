@@ -1,9 +1,11 @@
 import React, { useContext } from "react";
 import Link from "next/link";
 import { AuthContext } from "../context/AuthContext";
+import { BookingContext } from "../context/BookingContext";
 
 export default function Navbar() {
   const authContext = useContext(AuthContext);
+  const bookingContext = useContext(BookingContext);
 
   const handleLogOut = async () => {
     try {
@@ -32,6 +34,12 @@ export default function Navbar() {
           </a>
         </Link>
       </div>
+      <button
+        className="shadow-neumorph py-3 px-6 rounded-lg border border-red-700 border-opacity-0 hover:border-opacity-100 hover:text-red-500"
+        onClick={() => bookingContext.setBookingSideBarOpen(true)}
+      >
+        Book Now
+      </button>
       <button
         className="bg-brass shadow-neumorph py-3 px-6 rounded-lg border border-red-700 border-opacity-0 hover:border-opacity-100 hover:font-medium"
         onClick={handleLogOut}

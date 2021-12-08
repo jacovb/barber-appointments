@@ -27,6 +27,7 @@ const BookingContextProvider = ({ children }) => {
   const [dayBookings, setDayBookings] = useState([]);
   const [bookingData, setBookingData] = useState(startBookingForm);
   const { currentUserDetails } = useContext(AuthContext);
+  const [bookingSideBarOpen, setBookingSideBarOpen] = useState(false);
 
   useEffect(() => {
     fetchTreatments();
@@ -116,6 +117,8 @@ const BookingContextProvider = ({ children }) => {
     bookingData,
     setBookingData,
     handleBookingEntry,
+    bookingSideBarOpen,
+    setBookingSideBarOpen,
   };
 
   return (
