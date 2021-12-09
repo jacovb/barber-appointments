@@ -3,6 +3,11 @@ import { Fragment, useState, useContext } from "react";
 import { Dialog, Transition } from "@headlessui/react";
 import { XIcon } from "@heroicons/react/outline";
 import { BookingContext } from "../context/BookingContext";
+import DatePicker from "../components/DatePicker";
+import Timeslots from "../components/Timeslots";
+import BookingForm from "../components/BookingForm";
+import TreatmentSelect from "./TreatmentSelect";
+import BookingButton from "./BookingButton";
 
 export default function BookingSideBar() {
   const bookingContext = useContext(BookingContext);
@@ -36,7 +41,7 @@ export default function BookingSideBar() {
               leaveFrom="translate-x-0"
               leaveTo="translate-x-full"
             >
-              <div className="relative w-screen max-w-md">
+              <div className="relative w-screen max-w-lg">
                 <Transition.Child
                   as={Fragment}
                   enter="ease-in-out duration-500"
@@ -59,20 +64,19 @@ export default function BookingSideBar() {
                     </button>
                   </div>
                 </Transition.Child>
-                <div className="h-full flex flex-col py-6 bg-white shadow-xl overflow-y-scroll">
+                <div className="h-full flex flex-col py-6 bg-neumorph shadow-xl overflow-y-scroll text-white">
                   <div className="px-4 sm:px-6">
-                    <Dialog.Title className="text-lg font-medium text-gray-900">
-                      Panel title
+                    <Dialog.Title className="text-xl font-medium">
+                      Book an Appointment
                     </Dialog.Title>
                   </div>
                   <div className="mt-6 relative flex-1 px-4 sm:px-6">
                     {/* Replace with your content */}
-                    <div className="absolute inset-0 px-4 sm:px-6">
-                      <div
-                        className="h-full border-2 border-dashed border-gray-200"
-                        aria-hidden="true"
-                      />
-                    </div>
+                    {/* <BookingForm /> */}
+                    <TreatmentSelect />
+                    <DatePicker />
+                    <Timeslots />
+                    <BookingButton />
                     {/* /End replace */}
                   </div>
                 </div>

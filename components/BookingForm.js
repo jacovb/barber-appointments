@@ -26,16 +26,7 @@ export default function BookingForm() {
             ))}
           </select>
         </div>
-        <button
-          onClick={() => {
-            bookingContext.createBooking();
-            console.log("Booking Button Pressed");
-          }}
-        >
-          Book
-        </button>
       </form>
-      {console.log("Booking Form: ", bookingContext.bookingData)}
     </>
   );
 }

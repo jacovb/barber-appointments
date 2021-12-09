@@ -1,8 +1,5 @@
 import { useContext } from "react";
 import { AuthContext } from "../context/AuthContext";
-import DatePicker from "../components/DatePicker";
-import Timeslots from "../components/Timeslots";
-import BookingForm from "../components/BookingForm";
 import BookingSideBar from "../components/BookingSideBar";
 
 export default function Home() {
@@ -14,9 +11,6 @@ export default function Home() {
         Welcome,{" "}
         {authContext.currentUserDetails.name || authContext.userInfo.email}
       </p>
-      <DatePicker />
-      <Timeslots />
-      <BookingForm />
       <BookingSideBar />
     </div>
   );
