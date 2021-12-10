@@ -22,6 +22,7 @@ const startBookingForm = {
 
 const BookingContextProvider = ({ children }) => {
   const [treatments, setTreatments] = useState([]);
+  const [treatmentSelect, setTreatmentSelect] = useState("");
   const [selectedDate, setSelectedDate] = useState(new Date());
   const [timeSelect, setTimeSelect] = useState("");
   const [dayBookings, setDayBookings] = useState([]);
@@ -120,6 +121,8 @@ const BookingContextProvider = ({ children }) => {
     createBooking,
     bookingData,
     setBookingData,
+    treatmentSelect,
+    setTreatmentSelect,
     handleBookingEntry,
     handleTreatmentSelect,
     bookingSideBarOpen,

@@ -6,7 +6,6 @@ import { BookingContext } from "../context/BookingContext";
 import DatePicker from "../components/DatePicker";
 import Timeslots from "../components/Timeslots";
 import BookingForm from "../components/BookingForm";
-import TreatmentSelect from "./TreatmentSelect";
 import BookingButton from "./BookingButton";
 
 export default function BookingSideBar() {
@@ -72,8 +71,7 @@ export default function BookingSideBar() {
                   </div>
                   <div className="mt-6 relative flex-1 px-4 sm:px-6">
                     {/* Replace with your content */}
-                    {/* <BookingForm /> */}
-                    <TreatmentSelect />
+                    <BookingForm />
                     <DatePicker />
                     <Timeslots />
                     <BookingButton />
