@@ -1,13 +1,17 @@
 import { useContext } from "react";
 import { AuthContext } from "../context/AuthContext";
+import BookingSummary from "../components/BookingSummary";
 
 export default function Booking() {
   const authContext = useContext(AuthContext);
 
   return (
-    <div>
-      <p className="text-xl">Welcome, {authContext.userInfo.email}</p>
-      <p>This is where you will book an appointment</p>
+    <div className="bg-neumorph min-h-screen flex flex-col items-center">
+      <p className="text-2xl text-white">
+        {authContext.currentUserDetails.name || authContext.userInfo.email} -
+        Booking Overview
+      </p>
+      <BookingSummary />
     </div>
   );
 }

@@ -5,8 +5,8 @@ import { XIcon } from "@heroicons/react/outline";
 import { BookingContext } from "../context/BookingContext";
 import DatePicker from "../components/DatePicker";
 import Timeslots from "../components/Timeslots";
-import BookingForm from "../components/BookingForm";
-import BookingButton from "./BookingButton";
+import TreatmentPicker from "./TreatmentPicker";
+import ReviewButton from "./ReviewButton";
 
 export default function BookingSideBar() {
   const bookingContext = useContext(BookingContext);
@@ -71,10 +71,10 @@ export default function BookingSideBar() {
                   </div>
                   <div className="mt-6 relative flex-1 px-4 sm:px-6">
                     {/* Replace with your content */}
-                    <BookingForm />
+                    <TreatmentPicker />
                     <DatePicker />
                     <Timeslots />
-                    <BookingButton />
+                    <ReviewButton />
                     {/* /End replace */}
                   </div>
                 </div>

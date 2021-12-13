@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { BookingContext } from "../context/BookingContext";
 
-export default function BookingForm() {
+export default function TreatmentPicker() {
   const bookingContext = useContext(BookingContext);
 
   return (
@@ -18,7 +18,7 @@ export default function BookingForm() {
             name="bookingTreatmentId"
             required
             onChange={bookingContext.handleBookingEntry}
-            className="text-white text-sm w-450 h-10 py-2 pl-3 pr-10 mt-2 text-left bg-neumorph rounded-lg shadow-neumorph cursor-default border-none outline-none focus:ring-0"
+            className="text-white text-sm w-450 h-10 py-2 pl-3 pr-10 mt-2 mb-4 text-left bg-neumorph rounded-lg shadow-neumorph cursor-default border-none outline-none focus:ring-0"
           >
             <option value="" hidden disabled></option>
             {bookingContext.treatments.map((treatment, idx) => (
