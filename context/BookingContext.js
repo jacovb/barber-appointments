@@ -106,10 +106,6 @@ const BookingContextProvider = ({ children }) => {
     setBookingData({ ...bookingData, [e.target.name]: e.target.value });
   }
 
-  function handleTreatmentSelect(e) {
-    setBookingData({ ...bookingData, bookingTreatmentId: e.target.value });
-  }
-
   const state = {
     selectedDate,
     setSelectedDate,
@@ -124,7 +120,6 @@ const BookingContextProvider = ({ children }) => {
     treatmentSelect,
     setTreatmentSelect,
     handleBookingEntry,
-    handleTreatmentSelect,
     bookingSideBarOpen,
     setBookingSideBarOpen,
   };
