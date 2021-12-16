@@ -9,7 +9,6 @@ import {
   updateBooking as updateBookingMutation,
   deleteBooking as deleteBookingMutation,
 } from "../src/graphql/mutations";
-import { data } from "autoprefixer";
 
 export const BookingContext = React.createContext();
 
@@ -115,6 +114,7 @@ const BookingContextProvider = ({ children }) => {
     treatments,
     currentUserDetails,
     createBooking,
+    startBookingForm,
     bookingData,
     setBookingData,
     treatmentSelect,
