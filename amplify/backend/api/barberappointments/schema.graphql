@@ -14,6 +14,7 @@ type Treatment @model @auth(rules: [{ allow: public }]) {
   description: String
   price: Float
   bookings: [Booking] @connection(name: "TreatmentBookings")
+  isDoubleTimeSlot: Boolean
 }
 
 type Booking @model @auth(rules: [{ allow: public }]) {

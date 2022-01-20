@@ -32,7 +32,6 @@ export default function Navbar() {
         onClick={() => {
           bookingContext.setBookingSideBarOpen(true);
           // bookingContext.setBookingData(bookingContext.startBookingForm);
-          console.log(bookingContext.bookingData);
         }}
       >
         Book Now
