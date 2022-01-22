@@ -106,7 +106,6 @@ export const createTreatment = /* GraphQL */ `
         }
         nextToken
       }
-      isDoubleTimeSlot
       createdAt
       updatedAt
     }
@@ -133,7 +132,6 @@ export const updateTreatment = /* GraphQL */ `
         }
         nextToken
       }
-      isDoubleTimeSlot
       createdAt
       updatedAt
     }
@@ -160,7 +158,6 @@ export const deleteTreatment = /* GraphQL */ `
         }
         nextToken
       }
-      isDoubleTimeSlot
       createdAt
       updatedAt
     }
@@ -196,7 +193,6 @@ export const createBooking = /* GraphQL */ `
         bookings {
           nextToken
         }
-        isDoubleTimeSlot
         createdAt
         updatedAt
       }
@@ -236,7 +232,6 @@ export const updateBooking = /* GraphQL */ `
         bookings {
           nextToken
         }
-        isDoubleTimeSlot
         createdAt
         updatedAt
       }
@@ -276,7 +271,6 @@ export const deleteBooking = /* GraphQL */ `
         bookings {
           nextToken
         }
-        isDoubleTimeSlot
         createdAt
         updatedAt
       }

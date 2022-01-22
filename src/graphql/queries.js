@@ -68,7 +68,6 @@ export const getTreatment = /* GraphQL */ `
         }
         nextToken
       }
-      isDoubleTimeSlot
       createdAt
       updatedAt
     }
@@ -89,7 +88,6 @@ export const listTreatments = /* GraphQL */ `
         bookings {
           nextToken
         }
-        isDoubleTimeSlot
         createdAt
         updatedAt
       }
@@ -124,7 +122,6 @@ export const getBooking = /* GraphQL */ `
         bookings {
           nextToken
         }
-        isDoubleTimeSlot
         createdAt
         updatedAt
       }
@@ -160,7 +157,6 @@ export const listBookings = /* GraphQL */ `
           title
           description
           price
-          isDoubleTimeSlot
           createdAt
           updatedAt
         }
