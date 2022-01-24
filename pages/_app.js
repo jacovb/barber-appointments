@@ -6,9 +6,7 @@ import AuthProvider, {
   AuthIsSignedIn,
   AuthIsNotSignedIn,
 } from "../context/AuthContext";
-import BookingContextProvider, {
-  BookingContext,
-} from "../context/BookingContext";
+import BookingContextProvider from "../context/BookingContext";
 
 function MyApp({ Component, pageProps }) {
   return (

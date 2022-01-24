@@ -1,4 +1,3 @@
-import SocialSignIn from "./SocialSignIn";
 import { useContext } from "react";
 import { useForm } from "react-hook-form";
 import { AuthContext } from "../context/AuthContext";
@@ -57,8 +56,7 @@ export default function SignIn({ setAuthState }) {
         />
       </form>
 
-      <SocialSignIn />
-      <p className="mt-8 text-sm font-light text-white">
+      <p className="mt-6 text-sm font-light text-white">
         Don't have an account?
         <span
           onClick={() => setAuthState("signUp")}
