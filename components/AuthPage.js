@@ -5,6 +5,7 @@ import SignUp from "./signUp";
 import VerifySignUp from "./VerifySignUp";
 import ForgotPassword from "./ForgotPassword";
 import ForgotPasswordSubmit from "./ForgotPasswordSubmit";
+import BarberName from "./BarberName";
 
 export default function AuthPage() {
   const [authState, setAuthState] = useState("signIn");
@@ -12,8 +13,9 @@ export default function AuthPage() {
 
   return (
     <div className="bg-neumorph min-h-screen">
-      <div className="flex flex-col items-center">
-        <div className="max-w-full sm:w-540 mt-14 mb-14">
+      <div className="flex flex-col items-center pt-6">
+        <BarberName />
+        <div className="max-w-full sm:w-540 mt-6 mb-14">
           <div className="bg-neumorph py-10 px-12 shadow-neumorph rounded-2xl">
             {authState === "signIn" && <SignIn setAuthState={setAuthState} />}
             {authState === "signUp" && (

@@ -25,7 +25,7 @@ export default function TreatmentPicker() {
             </option>
             {bookingContext.treatments.map((treatment, idx) => (
               <option key={idx} value={treatment.id}>
-                {treatment.title}
+                {treatment.title} £{treatment.price}
               </option>
             ))}
           </select>
