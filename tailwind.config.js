@@ -31,6 +31,7 @@ module.exports = {
       },
       fontFamily: {
         AbrilFatface: ["Abril Fatface"],
+        Raleway: ["Raleway"],
       },
     },
   },

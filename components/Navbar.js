@@ -36,6 +36,9 @@ export default function Navbar() {
       >
         Book Now
       </button>
+      <p className="text-xl flex justify-center">
+        {`Welcome, ${authContext.currentUserDetails.name} ${authContext.currentUserDetails.surname}`}
+      </p>
       <button
         className="bg-brass shadow-neumorph py-3 px-6 rounded-lg border border-red-700 border-opacity-0 hover:border-opacity-100 hover:font-medium"
         onClick={handleLogOut}
