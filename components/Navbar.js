@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import Link from "next/link";
 import { AuthContext } from "../context/AuthContext";
 import { BookingContext } from "../context/BookingContext";
-import { HomeIcon } from "@heroicons/react/outline";
+import BarberNameSmall from "./BarberNameSmall";
 
 export default function Navbar() {
   const authContext = useContext(AuthContext);
@@ -17,30 +17,25 @@ export default function Navbar() {
   };
 
   return (
-    <nav className="py-4 px-12 text-white bg-neumorph flex flex-row justify-between">
-      <div className="flex flex-row">
-        <Link href="/">
-          <a className="shadow-neumorph p-3 rounded-lg border border-red-700 border-opacity-0 hover:border-opacity-100 hover:text-red-500">
-            <div className="h-7 w-7">
-              <HomeIcon />
-            </div>
-          </a>
-        </Link>
-      </div>
+    <nav className="py-6 px-12 text-white bg-neumorph flex flex-row justify-between items-start h-40">
       <button
-        className="shadow-neumorph py-3 px-6 rounded-lg border border-red-700 border-opacity-0 hover:border-opacity-100 hover:text-red-500"
+        className="shadow-neumorph py-3 px-6 h-14 rounded-lg border border-red-700 border-opacity-0 hover:border-opacity-100 hover:text-red-500"
         onClick={() => {
           bookingContext.setBookingSideBarOpen(true);
-          // bookingContext.setBookingData(bookingContext.startBookingForm);
+          bookingContext.setBookingData(bookingContext.startBookingForm);
         }}
       >
         Book Now
       </button>
-      <p className="text-xl flex justify-center">
-        {`Welcome, ${authContext.currentUserDetails.name} ${authContext.currentUserDetails.surname}`}
-      </p>
+
+      <Link href="/">
+        <a className="cursor-pointer text-white hover:text-red-500">
+          <BarberNameSmall />
+        </a>
+      </Link>
+
       <button
-        className="bg-brass shadow-neumorph py-3 px-6 rounded-lg border border-red-700 border-opacity-0 hover:border-opacity-100 hover:font-medium"
+        className="bg-brass shadow-neumorph py-3 px-6 h-14 rounded-lg border border-red-700 border-opacity-0 hover:border-opacity-100 hover:font-medium"
         onClick={handleLogOut}
       >
         Sign Out

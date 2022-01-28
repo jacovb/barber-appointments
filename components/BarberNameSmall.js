@@ -1,11 +1,11 @@
-export default function BarberName() {
+export default function BarberNameSmall() {
   return (
-    <div className="w-96 text-white font-Raleway text-6xl flex flex-col items-center mr-12">
+    <div className="w-40 font-Raleway text-2xl flex flex-col items-center">
       <div>The London</div>
       <div>Barber Co.</div>
       <svg
         xmlns="http://www.w3.org/2000/svg"
-        className="h-20 w-20 mt-8"
+        className="h-10 w-10 mt-2"
         fill="none"
         viewBox="0 0 24 24"
         stroke="currentColor"
