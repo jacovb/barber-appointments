@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import { BookingContext } from "../context/BookingContext";
-import BookingSideBar from "./BookingSideBar";
+import BookingModal from "./BookingModal";
 import { PencilAltIcon } from "@heroicons/react/outline";
 import CheckOutButton from "./CheckOutButton";
 
@@ -26,7 +26,7 @@ export default function BookingSummary() {
         </button>
         <CheckOutButton />
       </div>
-      <BookingSideBar />
+      <BookingModal />
     </>
   );
 }

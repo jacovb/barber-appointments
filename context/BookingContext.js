@@ -58,6 +58,10 @@ const BookingContextProvider = ({ children }) => {
     });
   }, [timeSelect, setTimeSelect]);
 
+  useEffect(() => {
+    console.log("Booking Data", bookingData);
+  }, [bookingData, setBookingData]);
+
   async function fetchTreatments() {
     try {
       const apiData = await API.graphql({ query: listTreatments });

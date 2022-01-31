@@ -22,7 +22,7 @@ export default function Navbar() {
         className="shadow-neumorph py-3 px-6 h-14 rounded-lg border border-red-700 border-opacity-0 hover:border-opacity-100 hover:text-red-500"
         onClick={() => {
           bookingContext.setBookingSideBarOpen(true);
-          bookingContext.setBookingData(bookingContext.startBookingForm);
+          // bookingContext.setBookingData(bookingContext.startBookingForm);
         }}
       >
         Book Now

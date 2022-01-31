@@ -3,12 +3,12 @@ import { Fragment, useState, useContext } from "react";
 import { Dialog, Transition } from "@headlessui/react";
 import { XIcon } from "@heroicons/react/outline";
 import { BookingContext } from "../context/BookingContext";
-import DatePicker from "../components/DatePicker";
-import Timeslots from "../components/Timeslots";
+import DatePicker from "./DatePicker";
+import Timeslots from "./Timeslots";
 import TreatmentPicker from "./TreatmentPicker";
 import ReviewButton from "./ReviewButton";
 
-export default function BookingSideBar() {
+export default function BookingModal() {
   const bookingContext = useContext(BookingContext);
 
   return (
