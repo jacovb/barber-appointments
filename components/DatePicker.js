@@ -1,15 +1,25 @@
-import { useContext } from "react";
+import { useState, useContext, useEffect } from "react";
 import Calendar from "react-calendar";
 import { BookingContext } from "../context/BookingContext";
 
 export default function DatePicker() {
   const bookingContext = useContext(BookingContext);
+  const [selectedDate, setSelectedDate] = useState(new Date());
+
+  useEffect(() => {
+    bookingContext.fetchDayBookings(selectedDate);
+    bookingContext.setBookingData({
+      ...bookingContext.bookingData,
+      date: selectedDate.toISOString().split("T")[0],
+    });
+    bookingContext.setTimeSelect("");
+  }, [selectedDate, setSelectedDate]);
 
   return (
     <div className="flex flex-col items-center">
       <Calendar
-        onChange={bookingContext.setSelectedDate}
-        value={bookingContext.selectedDate}
+        onChange={setSelectedDate}
+        value={selectedDate}
         minDate={new Date()}
         prev2Label={null}
         next2Label={null}

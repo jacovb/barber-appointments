@@ -22,7 +22,6 @@ const startBookingForm = {
 const BookingContextProvider = ({ children }) => {
   const [treatments, setTreatments] = useState([]);
   const [treatmentSelect, setTreatmentSelect] = useState("");
-  const [selectedDate, setSelectedDate] = useState(new Date());
   const [timeSelect, setTimeSelect] = useState("");
   const [dayBookings, setDayBookings] = useState([]);
   const [bookingData, setBookingData] = useState(startBookingForm);
@@ -31,7 +30,7 @@ const BookingContextProvider = ({ children }) => {
 
   useEffect(() => {
     fetchTreatments();
-    fetchDayBookings(selectedDate);
+    fetchDayBookings(bookingData.date);
   }, []);
 
   useEffect(() => {
@@ -43,20 +42,20 @@ const BookingContextProvider = ({ children }) => {
   }, [currentUserDetails]);
 
   useEffect(() => {
-    fetchDayBookings(selectedDate);
-    setBookingData({
-      ...bookingData,
-      date: selectedDate.toISOString().split("T")[0],
-    });
-    setTimeSelect("");
-  }, [selectedDate, setSelectedDate]);
-
-  useEffect(() => {
     setBookingData({
       ...bookingData,
       time: timeSelect,
     });
   }, [timeSelect, setTimeSelect]);
+
+  useEffect(() => {
+    if (bookingSideBarOpen) {
+      setBookingData({
+        ...bookingData,
+        bookingTreatmentId: "",
+      });
+    }
+  }, [bookingSideBarOpen, setBookingSideBarOpen]);
 
   useEffect(() => {
     console.log("Booking Data", bookingData);
@@ -74,7 +73,7 @@ const BookingContextProvider = ({ children }) => {
   async function fetchDayBookings(searchDate) {
     let dateFilter = {
       date: {
-        contains: searchDate.toISOString().split("T")[0],
+        contains: new Date(searchDate).toISOString().split("T")[0],
       },
     };
     try {
@@ -110,10 +109,9 @@ const BookingContextProvider = ({ children }) => {
   }
 
   const state = {
-    selectedDate,
-    setSelectedDate,
     timeSelect,
     setTimeSelect,
+    fetchDayBookings,
     dayBookings,
     treatments,
     currentUserDetails,
