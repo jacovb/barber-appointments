@@ -12,11 +12,11 @@ export default function BookingModal() {
   const bookingContext = useContext(BookingContext);
 
   return (
-    <Transition.Root show={bookingContext.bookingSideBarOpen} as={Fragment}>
+    <Transition.Root show={bookingContext.editModalOpen} as={Fragment}>
       <Dialog
         as="div"
         className="fixed inset-0 overflow-hidden"
-        onClose={bookingContext.setBookingSideBarOpen}
+        onClose={bookingContext.setEditModalOpen}
       >
         <div className="absolute inset-0 overflow-hidden">
           <Transition.Child
@@ -54,9 +54,7 @@ export default function BookingModal() {
                     <button
                       type="button"
                       className="rounded-md text-gray-300 hover:text-white focus:outline-none focus:ring-2 focus:ring-white"
-                      onClick={() =>
-                        bookingContext.setBookingSideBarOpen(false)
-                      }
+                      onClick={() => bookingContext.setEditModalOpen(false)}
                     >
                       <span className="sr-only">Close panel</span>
                       <XIcon className="h-6 w-6" aria-hidden="true" />

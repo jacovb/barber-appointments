@@ -13,13 +13,14 @@ export default function BookingSummary() {
 
   return (
     <>
+      {console.log("treatment", treatment)}
       <div className="relative w-450 h-fit bg-neumorph shadow-neumorph text-white p-4 m-4 rounded-lg">
         <p>Treatment: {treatment.title}</p>
         <p>Date: {bookingContext.bookingData.date}</p>
         <p>Time: {bookingContext.bookingData.time}</p>
         <p>Price: £{treatment.price}</p>
         <button
-          onClick={() => bookingContext.setBookingSideBarOpen(true)}
+          onClick={() => bookingContext.setEditModalOpen(true)}
           className="h-5 w-5 absolute top-4 right-4"
         >
           <PencilAltIcon />

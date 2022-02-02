@@ -26,7 +26,8 @@ const BookingContextProvider = ({ children }) => {
   const [dayBookings, setDayBookings] = useState([]);
   const [bookingData, setBookingData] = useState(startBookingForm);
   const { currentUserDetails } = useContext(AuthContext);
-  const [bookingSideBarOpen, setBookingSideBarOpen] = useState(false);
+  const [bookingModalOpen, setBookingModalOpen] = useState(false);
+  const [editModalOpen, setEditModalOpen] = useState(false);
 
   useEffect(() => {
     fetchTreatments();
@@ -49,13 +50,13 @@ const BookingContextProvider = ({ children }) => {
   }, [timeSelect, setTimeSelect]);
 
   useEffect(() => {
-    if (bookingSideBarOpen) {
+    if (bookingModalOpen) {
       setBookingData({
         ...bookingData,
         bookingTreatmentId: "",
       });
     }
-  }, [bookingSideBarOpen, setBookingSideBarOpen]);
+  }, [bookingModalOpen, setBookingModalOpen]);
 
   useEffect(() => {
     console.log("Booking Data", bookingData);
@@ -122,8 +123,10 @@ const BookingContextProvider = ({ children }) => {
     treatmentSelect,
     setTreatmentSelect,
     handleBookingEntry,
-    bookingSideBarOpen,
-    setBookingSideBarOpen,
+    bookingModalOpen,
+    setBookingModalOpen,
+    editModalOpen,
+    setEditModalOpen,
   };
 
   return (

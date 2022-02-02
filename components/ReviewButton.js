@@ -16,7 +16,7 @@ export default function ReviewButton() {
             bookingContext.bookingData.bookingTreatmentId &&
             bookingContext.bookingData.bookingUserId
           ) {
-            bookingContext.setBookingSideBarOpen(false);
+            bookingContext.setEditModalOpen(false);
             router.push("/booking");
           }
         }}

@@ -21,7 +21,7 @@ export default function Navbar() {
       <button
         className="shadow-neumorph py-3 px-6 h-14 rounded-lg border border-red-700 border-opacity-0 hover:border-opacity-100 hover:text-red-500"
         onClick={() => {
-          bookingContext.setBookingSideBarOpen(true);
+          bookingContext.setBookingModalOpen(true);
           // bookingContext.setBookingData(bookingContext.startBookingForm);
         }}
       >
