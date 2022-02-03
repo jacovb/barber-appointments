@@ -29,7 +29,12 @@ export default function Navbar() {
       </button>
 
       <Link href="/">
-        <a className="cursor-pointer text-white hover:text-red-500">
+        <a
+          className="cursor-pointer text-white hover:text-red-500"
+          onClick={() => {
+            bookingContext.setBookingModalOpen(false);
+          }}
+        >
           <BarberNameSmall />
         </a>
       </Link>
