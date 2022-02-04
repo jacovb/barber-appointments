@@ -18,15 +18,11 @@ export default function Navbar() {
 
   return (
     <nav className="py-6 px-12 text-white bg-neumorph flex flex-row justify-between items-start h-40">
-      <button
-        className="shadow-neumorph py-3 px-6 h-14 rounded-lg border border-red-700 border-opacity-0 hover:border-opacity-100 hover:text-red-500"
-        onClick={() => {
-          bookingContext.setBookingModalOpen(true);
-          // bookingContext.setBookingData(bookingContext.startBookingForm);
-        }}
-      >
-        Book Now
-      </button>
+      <Link href="/prices">
+        <a className="shadow-neumorph py-3 px-6 h-14 rounded-lg border border-red-700 border-opacity-0 hover:border-opacity-100 hover:text-red-500">
+          Prices
+        </a>
+      </Link>
 
       <Link href="/">
         <a

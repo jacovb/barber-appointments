@@ -1,6 +1,5 @@
 import BookingModalXX from "../components/BookingModalXX";
 import BookButtonLarge from "../components/BookButtonLarge";
-import BarberNameSmall from "../components/BarberNameSmall";
 
 export default function Home() {
   return (
