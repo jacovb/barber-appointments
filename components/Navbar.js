@@ -19,14 +19,14 @@ export default function Navbar() {
   return (
     <nav className="py-6 px-12 text-white bg-neumorph flex flex-row justify-between items-start h-40">
       <Link href="/prices">
-        <a className="shadow-neumorph py-3 px-6 h-14 rounded-lg border border-red-700 border-opacity-0 hover:border-opacity-100 hover:text-red-500">
+        <a className="shadow-neumorph py-3 px-6 h-14 rounded-lg border border-white border-opacity-0 transition duration-200 hover:border-opacity-100 hover:bg-red-700">
           Prices
         </a>
       </Link>
 
       <Link href="/">
         <a
-          className="cursor-pointer text-white hover:text-red-500"
+          className="cursor-pointer text-white hover:text-red-500 transition duration-200"
           onClick={() => {
             bookingContext.setBookingModalOpen(false);
           }}
@@ -36,7 +36,7 @@ export default function Navbar() {
       </Link>
 
       <button
-        className="bg-brass shadow-neumorph py-3 px-6 h-14 rounded-lg border border-red-700 border-opacity-0 hover:border-opacity-100 hover:font-medium"
+        className="bg-brass shadow-neumorph py-3 px-6 h-14 rounded-lg border border-white border-opacity-0 transition duration-200 hover:border-opacity-100 hover:font-medium hover:bg-red-700"
         onClick={handleLogOut}
       >
         Sign Out

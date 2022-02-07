@@ -40,7 +40,7 @@ const BookingContextProvider = ({ children }) => {
       bookingUserId: currentUserDetails.id,
       paid: false,
     });
-  }, [currentUserDetails]);
+  }, [currentUserDetails, bookingModalOpen]);
 
   useEffect(() => {
     setBookingData({
@@ -48,15 +48,6 @@ const BookingContextProvider = ({ children }) => {
       time: timeSelect,
     });
   }, [timeSelect, setTimeSelect]);
-
-  useEffect(() => {
-    if (bookingModalOpen) {
-      setBookingData({
-        ...bookingData,
-        bookingTreatmentId: "",
-      });
-    }
-  }, [bookingModalOpen, setBookingModalOpen]);
 
   useEffect(() => {
     console.log("Booking Data", bookingData);

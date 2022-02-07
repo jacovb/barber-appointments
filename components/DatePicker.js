@@ -4,7 +4,9 @@ import { BookingContext } from "../context/BookingContext";
 
 export default function DatePicker() {
   const bookingContext = useContext(BookingContext);
-  const [selectedDate, setSelectedDate] = useState(new Date());
+  const [selectedDate, setSelectedDate] = useState(
+    new Date(bookingContext.bookingData.date)
+  );
 
   useEffect(() => {
     bookingContext.fetchDayBookings(selectedDate);
@@ -12,7 +14,7 @@ export default function DatePicker() {
       ...bookingContext.bookingData,
       date: selectedDate.toISOString().split("T")[0],
     });
-    bookingContext.setTimeSelect("");
+    bookingContext.setTimeSelect(""); //creating problem with time in Booking Summary.
   }, [selectedDate, setSelectedDate]);
 
   return (

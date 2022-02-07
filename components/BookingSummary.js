@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import { BookingContext } from "../context/BookingContext";
 import BookingModal from "./BookingModal";
+import BookingModalXX from "./BookingModalXX";
 import { PencilAltIcon } from "@heroicons/react/outline";
 import CheckOutButton from "./CheckOutButton";
 
@@ -14,20 +15,21 @@ export default function BookingSummary() {
   return (
     <>
       {console.log("treatment", treatment)}
+      {console.log("Booking Data BS", bookingContext.bookingData)}
       <div className="relative w-450 h-fit bg-neumorph shadow-neumorph text-white p-4 m-4 rounded-lg">
         <p>Treatment: {treatment.title}</p>
         <p>Date: {bookingContext.bookingData.date}</p>
         <p>Time: {bookingContext.bookingData.time}</p>
         <p>Price: £{treatment.price}</p>
         <button
-          onClick={() => bookingContext.setEditModalOpen(true)}
+          onClick={() => bookingContext.setBookingModalOpen(true)}
           className="h-5 w-5 absolute top-4 right-4"
         >
           <PencilAltIcon />
         </button>
         <CheckOutButton />
       </div>
-      <BookingModal />
+      <BookingModalXX />
     </>
   );
 }
