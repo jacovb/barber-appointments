@@ -9,12 +9,17 @@ export default function DatePicker() {
   );
 
   useEffect(() => {
-    bookingContext.fetchDayBookings(selectedDate);
-    bookingContext.setBookingData({
-      ...bookingContext.bookingData,
-      date: selectedDate.toISOString().split("T")[0],
-    });
-    bookingContext.setTimeSelect(""); //creating problem with time in Booking Summary.
+    if (
+      selectedDate.toISOString().split("T")[0] !==
+      bookingContext.bookingData.date
+    ) {
+      bookingContext.fetchDayBookings(selectedDate);
+      bookingContext.setBookingData({
+        ...bookingContext.bookingData,
+        date: selectedDate.toISOString().split("T")[0],
+      });
+      bookingContext.setTimeSelect("");
+    }
   }, [selectedDate, setSelectedDate]);
 
   return (
