@@ -7,7 +7,7 @@ export default function Booking() {
 
   return (
     <div className="bg-neumorph min-h-screen flex flex-col items-center">
-      <p className="text-2xl text-white">
+      <p className="text-2xl text-white my-3">
         {authContext.currentUserDetails.name || authContext.userInfo.email} -
         Booking Overview
       </p>

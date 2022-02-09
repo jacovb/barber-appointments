@@ -19,7 +19,7 @@ export default function Navbar() {
   return (
     <nav className="py-6 px-12 text-white bg-neumorph flex flex-row justify-between items-start h-40">
       <Link href="/prices">
-        <a className="shadow-neumorph py-3 px-6 h-14 rounded-lg border border-white border-opacity-0 transition duration-200 hover:border-opacity-100 hover:bg-red-700">
+        <a className="shadow-neumorph py-3 px-6 flex items-center h-14 rounded-lg border border-white border-opacity-0 transition duration-200 hover:border-opacity-100 hover:bg-red-700">
           Prices
         </a>
       </Link>

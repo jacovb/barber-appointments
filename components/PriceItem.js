@@ -11,7 +11,7 @@ export default function PriceItem({ treatment }) {
         <div className="text-lg">£ {treatment.price}</div>
       </div>
       <button
-        className="text-xl bg-neumorph text-red-700 rounded-r-lg border border-white border-opacity-0 transition duration-200 hover:border-opacity-100 hover:bg-red-700 hover:text-white"
+        className="outline-none text-xl bg-neumorph text-red-700 rounded-r-lg border border-white border-opacity-0 transition duration-200 hover:border-opacity-100 hover:bg-red-700 hover:text-white"
         onClick={() => {
           bookingContext.setBookingModalOpen(true);
           bookingContext.setBookingData({

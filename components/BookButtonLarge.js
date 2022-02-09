@@ -15,7 +15,7 @@ export default function BookButtonLarge() {
           });
           bookingContext.setBookingModalOpen(true);
         }}
-        className="w-64 h-36 mt-2 text-3xl bg-red-700 shadow-neumorph rounded-lg border border-white border-opacity-0 transition duration-200 hover:border-opacity-100 hover:bg-red-900"
+        className="outline-none w-64 h-36 mt-2 text-3xl bg-red-700 shadow-neumorph rounded-lg border border-white border-opacity-0 transition duration-200 hover:border-opacity-100 hover:bg-red-900"
       >
         Book Now
       </button>
