@@ -68,6 +68,7 @@ export const getTreatment = /* GraphQL */ `
         }
         nextToken
       }
+      stripeApi
       createdAt
       updatedAt
     }
@@ -88,6 +89,7 @@ export const listTreatments = /* GraphQL */ `
         bookings {
           nextToken
         }
+        stripeApi
         createdAt
         updatedAt
       }
@@ -122,6 +124,7 @@ export const getBooking = /* GraphQL */ `
         bookings {
           nextToken
         }
+        stripeApi
         createdAt
         updatedAt
       }
@@ -157,6 +160,7 @@ export const listBookings = /* GraphQL */ `
           title
           description
           price
+          stripeApi
           createdAt
           updatedAt
         }

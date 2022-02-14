@@ -94,6 +94,7 @@ export const onCreateTreatment = /* GraphQL */ `
         }
         nextToken
       }
+      stripeApi
       createdAt
       updatedAt
     }
@@ -117,6 +118,7 @@ export const onUpdateTreatment = /* GraphQL */ `
         }
         nextToken
       }
+      stripeApi
       createdAt
       updatedAt
     }
@@ -140,6 +142,7 @@ export const onDeleteTreatment = /* GraphQL */ `
         }
         nextToken
       }
+      stripeApi
       createdAt
       updatedAt
     }
@@ -172,6 +175,7 @@ export const onCreateBooking = /* GraphQL */ `
         bookings {
           nextToken
         }
+        stripeApi
         createdAt
         updatedAt
       }
@@ -208,6 +212,7 @@ export const onUpdateBooking = /* GraphQL */ `
         bookings {
           nextToken
         }
+        stripeApi
         createdAt
         updatedAt
       }
@@ -244,6 +249,7 @@ export const onDeleteBooking = /* GraphQL */ `
         bookings {
           nextToken
         }
+        stripeApi
         createdAt
         updatedAt
       }
