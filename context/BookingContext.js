@@ -16,7 +16,7 @@ const startBookingForm = {
   date: new Date().toISOString().split("T")[0],
   time: "",
   bookingUserId: "",
-  bookingTreatmentId: "",
+  stripeApi: "",
 };
 
 const BookingContextProvider = ({ children }) => {
@@ -100,6 +100,14 @@ const BookingContextProvider = ({ children }) => {
     setBookingData({ ...bookingData, [e.target.name]: e.target.value });
   }
 
+  function handleTreatmentPicker(e) {
+    setBookingData({
+      ...bookingData,
+      bookingTreatmentId: e.target.value.id,
+      stripeApi: e.target.value.stripeApi,
+    });
+  }
+
   const state = {
     timeSelect,
     setTimeSelect,
@@ -118,6 +126,7 @@ const BookingContextProvider = ({ children }) => {
     setBookingModalOpen,
     editModalOpen,
     setEditModalOpen,
+    handleTreatmentPicker,
   };
 
   return (

@@ -1,6 +1,11 @@
+import { useContext } from "react";
+import { BookingContext } from "../../context/BookingContext";
+
 const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
 
 export default async function handler(req, res) {
+  const bookingContext = useContext(BookingContext);
+
   if (req.method === "POST") {
     try {
       // Create Checkout Sessions from body params.
@@ -8,12 +13,12 @@ export default async function handler(req, res) {
         line_items: [
           {
             // Provide the exact Price ID (for example, pr_1234) of the product you want to sell
-            price: "{{PRICE_ID}}",
+            price: bookingContext.bookingData.stripeApi,
             quantity: 1,
           },
         ],
         mode: "payment",
-        success_url: `${req.headers.origin}/?success=true`,
+        success_url: `${req.headers.origin}/confirmation?success=true`,
         cancel_url: `${req.headers.origin}/?canceled=true`,
       });
       res.redirect(303, session.url);

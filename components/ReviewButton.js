@@ -13,7 +13,7 @@ export default function ReviewButton() {
           if (
             bookingContext.bookingData.date &&
             bookingContext.bookingData.time &&
-            bookingContext.bookingData.bookingTreatmentId &&
+            bookingContext.bookingData.stripeApi &&
             bookingContext.bookingData.bookingUserId
           ) {
             bookingContext.setEditModalOpen(false);

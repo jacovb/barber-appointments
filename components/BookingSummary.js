@@ -7,8 +7,7 @@ import PaymentButton from "./PaymentButton";
 export default function BookingSummary() {
   const bookingContext = useContext(BookingContext);
   let treatment = bookingContext.treatments.filter(
-    (treatment) =>
-      treatment.id === bookingContext.bookingData.bookingTreatmentId
+    (treatment) => treatment.stripeApi === bookingContext.bookingData.stripeApi
   )[0];
 
   return (
