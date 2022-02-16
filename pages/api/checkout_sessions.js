@@ -1,10 +1,7 @@
-import { useContext } from "react";
-import { BookingContext } from "../../context/BookingContext";
-
 const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
 
 export default async function handler(req, res) {
-  const bookingContext = useContext(BookingContext);
+  const { item } = req.body;
 
   if (req.method === "POST") {
     try {
@@ -13,7 +10,7 @@ export default async function handler(req, res) {
         line_items: [
           {
             // Provide the exact Price ID (for example, pr_1234) of the product you want to sell
-            price: bookingContext.bookingData.stripeApi,
+            price: item.stripeApi,
             quantity: 1,
           },
         ],
