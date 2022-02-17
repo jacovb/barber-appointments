@@ -49,9 +49,9 @@ const BookingContextProvider = ({ children }) => {
     });
   }, [timeSelect, setTimeSelect]);
 
-  useEffect(() => {
-    console.log("Booking Data", bookingData);
-  }, [bookingData, setBookingData]);
+  // useEffect(() => {
+  //   console.log("Booking Data", bookingData);
+  // }, [bookingData, setBookingData]);
 
   async function fetchTreatments() {
     try {

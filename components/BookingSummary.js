@@ -13,7 +13,7 @@ export default function BookingSummary() {
   return (
     <>
       {console.log("treatment", treatment)}
-      {console.log("Booking Data BS", bookingContext.bookingData)}
+      {/* {console.log("Booking Data BS", bookingContext.bookingData)} */}
       <div className="relative w-96 h-fit bg-neumorph shadow-neumorphInset text-white p-4 m-4 rounded-lg">
         <div className="grid grid-cols-2 text-lg">
           <p className="mx-4 my-1 text-gray-400 justify-self-end">Treatment:</p>

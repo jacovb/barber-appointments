@@ -1,5 +1,4 @@
-import React, { useContext, useEffect } from "react";
-import { useRouter } from "next/router";
+import React, { useContext } from "react";
 import { BookingContext } from "../context/BookingContext";
 import { loadStripe } from "@stripe/stripe-js";
 import axios from "axios";
@@ -10,7 +9,6 @@ const stripePromise = loadStripe(
 
 export default function PaymentButton() {
   const bookingContext = useContext(BookingContext);
-  const router = useRouter();
 
   const createCheckoutSession = async () => {
     const stripe = await stripePromise;
@@ -25,29 +23,8 @@ export default function PaymentButton() {
     }
   };
 
-  const { success, canceled } = router.query;
-
-  useEffect(() => {
-    // Check to see if this is a redirect back from Checkout
-    const query = new URLSearchParams(window.location.search);
-
-    if (success !== undefined || canceled !== undefined) {
-      if (success) {
-        console.log("Order placed! You will receive an email confirmation.");
-      }
-
-      if (canceled) {
-        console.log(
-          "Order canceled -- continue to shop around and checkout when you’re ready."
-        );
-      }
-    }
-  }, [success, canceled]);
-
   return (
     <div className="flex flex-col items-center">
-      {/* <form action="/api/checkout_sessions" method="POST">
-        <section> */}
       <button
         type="submit"
         role="link"
@@ -56,8 +33,6 @@ export default function PaymentButton() {
       >
         Payment
       </button>
-      {/* </section>
-      </form> */}
     </div>
   );
 }

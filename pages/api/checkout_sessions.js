@@ -3,6 +3,11 @@ const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
 export default async function handler(req, res) {
   const { item } = req.body;
 
+  const redirectURL =
+    process.env.NODE_ENV === "development"
+      ? "http://localhost:3000"
+      : "https://stripe-checkout-next-js-demo.vercel.app";
+
   if (req.method === "POST") {
     try {
       // Create Checkout Sessions from body params.
@@ -15,10 +20,10 @@ export default async function handler(req, res) {
           },
         ],
         mode: "payment",
-        success_url: `${req.headers.origin}/confirmation?success=true`,
-        cancel_url: `${req.headers.origin}/?canceled=true`,
+        success_url: redirectURL + "/confirmation?success=true",
+        cancel_url: redirectURL + "/confirmation?canceled=true",
       });
-      res.redirect(303, session.url);
+      res.json({ id: session.id });
     } catch (err) {
       res.status(err.statusCode || 500).json(err.message);
     }
