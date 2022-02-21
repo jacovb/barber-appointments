@@ -1,4 +1,4 @@
-import { useContext, useEffect } from "react";
+import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../context/AuthContext";
 import { BookingContext } from "../context/BookingContext";
 import { useRouter } from "next/router";
@@ -9,10 +9,14 @@ export default function Confirmation() {
   const router = useRouter();
 
   const { success, canceled } = router.query;
+  const [sessionId, setSessionId] = useState("");
 
   useEffect(() => {
     // Check to see if this is a redirect back from Checkout
     const query = new URLSearchParams(window.location.search);
+    setSessionId(query.get("session_id"));
+
+    console.log("Session ID", sessionId);
 
     if (success !== undefined || canceled !== undefined) {
       if (success) {

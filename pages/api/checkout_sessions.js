@@ -20,7 +20,9 @@ export default async function handler(req, res) {
           },
         ],
         mode: "payment",
-        success_url: redirectURL + "/confirmation?success=true",
+        success_url:
+          redirectURL +
+          "/confirmation?success=true?session_id={CHECKOUT_SESSION_ID}",
         cancel_url: redirectURL + "/confirmation?canceled=true",
       });
       res.json({ id: session.id });
