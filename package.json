@@ -12,6 +12,7 @@
     "@aws-amplify/ui-react": "^1.2.20",
     "@headlessui/react": "^1.4.2",
     "@heroicons/react": "^1.0.5",
+    "@stripe/react-stripe-js": "^1.7.0",
     "@stripe/stripe-js": "^1.22.0",
     "@tailwindcss/forms": "^0.3.4",
     "aws-amplify": "^4.3.2",
