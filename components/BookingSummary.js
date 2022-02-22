@@ -22,7 +22,7 @@ export default function BookingSummary() {
     fetch("/create-payment-intent", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ items: bookingContext.bookingData }),
+      body: JSON.stringify({ items: bookingContext.bookingData }), //get bookingData to server.js. Maybe rename server.js as create-payment-intent and save in api folder
     })
       .then((res) => res.json())
       .then((data) => setClientSecret(data.clientSecret));
