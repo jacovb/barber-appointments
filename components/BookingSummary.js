@@ -17,12 +17,14 @@ export default function BookingSummary() {
     (treatment) => treatment.stripeApi === bookingContext.bookingData.stripeApi
   )[0];
 
+  console.log("bookingData", bookingContext.bookingData);
+
   useEffect(() => {
     // Create PaymentIntent as soon as the page loads
     fetch("/create-payment-intent", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ items: bookingContext.bookingData }), //get bookingData to server.js. Maybe rename server.js as create-payment-intent and save in api folder
+      body: JSON.stringify({ items: [bookingContext.bookingData] }), //get bookingData to server.js. Maybe rename server.js as create-payment-intent and save in api folder
     })
       .then((res) => res.json())
       .then((data) => setClientSecret(data.clientSecret));
@@ -39,6 +41,7 @@ export default function BookingSummary() {
   return (
     <>
       {console.log("treatment", treatment)}
+      {console.log("clientSecret", clientSecret)}
       {/* {console.log("Booking Data BS", bookingContext.bookingData)} */}
       <div className="relative w-96 h-fit bg-neumorph shadow-neumorphInset text-white p-4 m-4 rounded-lg">
         <div className="grid grid-cols-2 text-lg">
