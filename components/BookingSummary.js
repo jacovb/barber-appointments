@@ -1,17 +1,10 @@
-import React, { useState, useEffect, useContext } from "react";
-import { loadStripe } from "@stripe/stripe-js";
-import { Elements } from "@stripe/react-stripe-js";
+import React, { useEffect, useContext } from "react";
 import { BookingContext } from "../context/BookingContext";
 import BookingEditModal from "./BookingEditModal";
+import Block from "./checkout/Block";
 import { PencilAltIcon } from "@heroicons/react/outline";
-import PaymentButton from "./PaymentButton";
-
-const stripePromise = loadStripe(
-  process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY
-);
 
 export default function BookingSummary() {
-  const [clientSecret, setClientSecret] = useState("");
   const bookingContext = useContext(BookingContext);
   let treatment = bookingContext.treatments.filter(
     (treatment) => treatment.stripeApi === bookingContext.bookingData.stripeApi
@@ -20,30 +13,20 @@ export default function BookingSummary() {
   console.log("bookingData", bookingContext.bookingData);
 
   useEffect(() => {
-    // Create PaymentIntent as soon as the page loads
-    fetch("/create-payment-intent", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ items: [bookingContext.bookingData] }), //get bookingData to server.js. Maybe rename server.js as create-payment-intent and save in api folder
-    })
-      .then((res) => res.json())
-      .then((data) => setClientSecret(data.clientSecret));
-  }, []);
-
-  const appearance = {
-    theme: "stripe",
-  };
-  const options = {
-    clientSecret,
-    appearance,
-  };
+    bookingContext.setBookingData({
+      ...bookingContext.bookingData,
+      bookingTreatmentId: treatment.id,
+      treatment: treatment.title,
+      description: treatment.description,
+      price: treatment.price,
+    });
+  }, [treatment]);
 
   return (
     <>
       {console.log("treatment", treatment)}
-      {console.log("clientSecret", clientSecret)}
-      {/* {console.log("Booking Data BS", bookingContext.bookingData)} */}
-      <div className="relative w-96 h-fit bg-neumorph shadow-neumorphInset text-white p-4 m-4 rounded-lg">
+      {console.log("Booking Data BS", bookingContext.bookingData)}
+      <Block>
         <div className="grid grid-cols-2 text-lg">
           <p className="mx-4 my-1 text-gray-400 justify-self-end">Treatment:</p>
           <p className="mx-4 my-1">{treatment.title}</p>
@@ -60,14 +43,7 @@ export default function BookingSummary() {
         >
           <PencilAltIcon />
         </button>
-        <div className="App">
-          {clientSecret && (
-            <Elements options={options} stripe={stripePromise}>
-              <PaymentButton />
-            </Elements>
-          )}
-        </div>
-      </div>
+      </Block>
       <BookingEditModal />
     </>
   );
