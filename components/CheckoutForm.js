@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useContext } from "react";
 import { BookingContext } from "../context/BookingContext";
 import Block from "./checkout/Block";
+import BillingDetailsFields from "./checkout/BillingDetailsFields";
 import { CardElement, useStripe, useElements } from "@stripe/react-stripe-js";
 import axios from "axios";
 
@@ -78,22 +79,28 @@ export default function PaymentButton() {
   };
 
   return (
-    <Block>
-      <div className="flex flex-col items-center">
-        <form id="payment-form" onSubmit={handleSubmit}>
-          <button disabled={isLoading || !stripe || !elements} id="submit">
-            <span id="button-text">
-              {isLoading ? (
-                <div className="spinner" id="spinner"></div>
-              ) : (
-                "Pay now"
-              )}
-            </span>
-          </button>
-          {/* Show any error or success messages */}
-          {message && <div id="payment-message">{message}</div>}
-        </form>
-      </div>
-    </Block>
+    <form>
+      <Block>
+        <BillingDetailsFields />
+      </Block>
+
+      <Block>
+        <div className="flex flex-col items-center">
+          <form id="payment-form" onSubmit={handleSubmit}>
+            <button disabled={isLoading || !stripe || !elements} id="submit">
+              <span id="button-text">
+                {isLoading ? (
+                  <div className="spinner" id="spinner"></div>
+                ) : (
+                  "Pay now"
+                )}
+              </span>
+            </button>
+            {/* Show any error or success messages */}
+            {message && <div id="payment-message">{message}</div>}
+          </form>
+        </div>
+      </Block>
+    </form>
   );
 }
