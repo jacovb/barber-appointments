@@ -85,6 +85,10 @@ export default function PaymentButton() {
       </Block>
 
       <Block>
+        <CardElement />
+      </Block>
+
+      <Block>
         <div className="flex flex-col items-center">
           <form id="payment-form" onSubmit={handleSubmit}>
             <button disabled={isLoading || !stripe || !elements} id="submit">
