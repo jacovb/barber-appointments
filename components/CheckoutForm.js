@@ -9,100 +9,140 @@ export default function PaymentButton() {
   const stripe = useStripe();
   const elements = useElements();
 
-  const [message, setMessage] = useState(null);
-  const [isLoading, setIsLoading] = useState(false);
+  const [checkoutError, setCheckoutError] = useState();
+  const [isProcessing, setIsProcessing] = useState(false);
 
   const bookingContext = useContext(BookingContext);
 
-  useEffect(() => {
-    if (!stripe) {
-      return;
-    }
+  const handleCardDetailsChange = (e) => {
+    e.error ? setCheckoutError(e.error.message) : setCheckoutError();
+  };
 
-    const clientSecret = new URLSearchParams(window.location.search).get(
-      "payment_intent_client_secret"
-    );
+  // useEffect(() => {
+  //   if (!stripe) {
+  //     return;
+  //   }
 
-    if (!clientSecret) {
-      return;
-    }
+  //   const clientSecret = new URLSearchParams(window.location.search).get(
+  //     "payment_intent_client_secret"
+  //   );
 
-    stripe.retrievePaymentIntent(clientSecret).then(({ paymentIntent }) => {
-      switch (paymentIntent.status) {
-        case "succeeded":
-          setMessage("Payment succeeded!");
-          break;
-        case "processing":
-          setMessage("Your payment is processing.");
-          break;
-        case "requires_payment_method":
-          setMessage("Your payment was not successful, please try again.");
-          break;
-        default:
-          setMessage("Something went wrong.");
-          break;
-      }
-    });
-  }, [stripe]);
+  //   if (!clientSecret) {
+  //     return;
+  //   }
+
+  //   stripe.retrievePaymentIntent(clientSecret).then(({ paymentIntent }) => {
+  //     switch (paymentIntent.status) {
+  //       case "succeeded":
+  //         setMessage("Payment succeeded!");
+  //         break;
+  //       case "processing":
+  //         setMessage("Your payment is processing.");
+  //         break;
+  //       case "requires_payment_method":
+  //         setMessage("Your payment was not successful, please try again.");
+  //         break;
+  //       default:
+  //         setMessage("Something went wrong.");
+  //         break;
+  //     }
+  //   });
+  // }, [stripe]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if (!stripe || !elements) {
-      // Stripe.js has not yet loaded.
-      // Make sure to disable form submission until Stripe.js has loaded.
-      return;
-    }
-
-    setIsLoading(true);
-
-    const { error } = await stripe.confirmPayment({
-      elements,
-      confirmParams: {
-        // Make sure to change this to your payment completion page
-        return_url: "http://localhost:3000/confirmation",
+    const billingDetails = {
+      name: e.target.name.value,
+      email: e.target.email.value,
+      address: {
+        line1: e.target.address.value,
+        city: e.target.city.value,
+        postal_code: e.target.postcode.value,
       },
-    });
+    };
 
-    // This point will only be reached if there is an immediate error when
-    // confirming the payment. Otherwise, your customer will be redirected to
-    // your `return_url`. For some payment methods like iDEAL, your customer will
-    // be redirected to an intermediate site first to authorize the payment, then
-    // redirected to the `return_url`.
-    if (error.type === "card_error" || error.type === "validation_error") {
-      setMessage(error.message);
-    } else {
-      setMessage("An unexpected error occured.");
+    setIsProcessing(true);
+
+    const cardElement = elements.getElement("card");
+
+    try {
+      const { data: clientSecret } = await axios.post("/api/payment_intents", {
+        amount: bookingContext.bookingData.price * 100,
+      });
+
+      const paymentMethodReq = await stripe.createPaymentMethod({
+        type: "card",
+        card: cardElement,
+        billing_details: billingDetails,
+      });
+
+      if (paymentMethodReq.error) {
+        setCheckoutError(paymentMethodReq.error.message);
+        setIsProcessing(false);
+        return;
+      }
+
+      const { error } = await stripe.confirmCardPayment(clientSecret, {
+        payment_method: paymentMethodReq.paymentMethod.id,
+      });
+
+      if (error) {
+        setCheckoutError(error.message);
+        setIsProcessing(false);
+        return;
+      }
+
+      onSuccessfulCheckout();
+    } catch (err) {
+      setCheckoutError(err.message);
     }
+  };
 
-    setIsLoading(false);
+  const iframeStyles = {
+    base: {
+      color: "#fff",
+      fontSize: "16px",
+      iconColor: "#fff",
+      "::placeholder": {
+        color: "#87bbfd",
+      },
+    },
+    invalid: {
+      iconColor: "#FFC7EE",
+      color: "#FFC7EE",
+    },
+    complete: {
+      iconColor: "#cbf4c9",
+    },
+  };
+
+  const cardElementOptions = {
+    iconStyle: "solid",
+    style: iframeStyles,
+    hidePostalCode: true,
   };
 
   return (
-    <form>
+    <form onSubmit={handleSubmit}>
       <Block>
         <BillingDetailsFields />
       </Block>
 
       <Block>
-        <CardElement />
+        <CardElement
+          options={cardElementOptions}
+          onChange={handleCardDetailsChange}
+        />
       </Block>
+
+      {checkoutError && <div>{checkoutError}</div>}
 
       <Block>
         <div className="flex flex-col items-center">
-          <form id="payment-form" onSubmit={handleSubmit}>
-            <button disabled={isLoading || !stripe || !elements} id="submit">
-              <span id="button-text">
-                {isLoading ? (
-                  <div className="spinner" id="spinner"></div>
-                ) : (
-                  "Pay now"
-                )}
-              </span>
-            </button>
-            {/* Show any error or success messages */}
-            {message && <div id="payment-message">{message}</div>}
-          </form>
+          <button disabled={isProcessing || !stripe} id="submit">
+            {isProcessing ? "Processing..." : "Pay now"}
+          </button>
         </div>
       </Block>
     </form>
