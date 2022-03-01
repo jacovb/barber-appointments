@@ -11,7 +11,7 @@ export default function BookingConfirmButton() {
           if (
             bookingContext.bookingData.date &&
             bookingContext.bookingData.time &&
-            bookingContext.bookingData.stripeApi &&
+            bookingContext.bookingData.bookingTreatmentId &&
             bookingContext.bookingData.bookingUserId
           ) {
             bookingContext.setEditModalOpen(false);

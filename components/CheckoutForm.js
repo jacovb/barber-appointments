@@ -1,53 +1,37 @@
-import React, { useEffect, useState, useContext } from "react";
+import React, { useState, useContext } from "react";
+import { useRouter } from "next/router";
 import { BookingContext } from "../context/BookingContext";
 import Block from "./checkout/Block";
 import BillingDetailsFields from "./checkout/BillingDetailsFields";
 import { CardElement, useStripe, useElements } from "@stripe/react-stripe-js";
 import axios from "axios";
 
-export default function PaymentButton() {
+export default function CheckoutForm() {
   const stripe = useStripe();
   const elements = useElements();
+  const router = useRouter();
 
   const [checkoutError, setCheckoutError] = useState();
   const [isProcessing, setIsProcessing] = useState(false);
 
   const bookingContext = useContext(BookingContext);
+  let treatment = bookingContext.treatments.filter(
+    (treatment) =>
+      treatment.id === bookingContext.bookingData.bookingTreatmentId
+  )[0];
 
   const handleCardDetailsChange = (e) => {
     e.error ? setCheckoutError(e.error.message) : setCheckoutError();
   };
 
-  // useEffect(() => {
-  //   if (!stripe) {
-  //     return;
-  //   }
-
-  //   const clientSecret = new URLSearchParams(window.location.search).get(
-  //     "payment_intent_client_secret"
-  //   );
-
-  //   if (!clientSecret) {
-  //     return;
-  //   }
-
-  //   stripe.retrievePaymentIntent(clientSecret).then(({ paymentIntent }) => {
-  //     switch (paymentIntent.status) {
-  //       case "succeeded":
-  //         setMessage("Payment succeeded!");
-  //         break;
-  //       case "processing":
-  //         setMessage("Your payment is processing.");
-  //         break;
-  //       case "requires_payment_method":
-  //         setMessage("Your payment was not successful, please try again.");
-  //         break;
-  //       default:
-  //         setMessage("Something went wrong.");
-  //         break;
-  //     }
-  //   });
-  // }, [stripe]);
+  function onSuccessfulCheckout() {
+    bookingContext.setBookingData({
+      ...bookingContext.bookingData,
+      paid: true,
+    });
+    bookingContext.createBooking();
+    router.push("/confirmation");
+  }
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -68,7 +52,7 @@ export default function PaymentButton() {
 
     try {
       const { data: clientSecret } = await axios.post("/api/payment_intents", {
-        amount: bookingContext.bookingData.price * 100,
+        amount: treatment.price * 100,
       });
 
       const paymentMethodReq = await stripe.createPaymentMethod({
@@ -92,6 +76,8 @@ export default function PaymentButton() {
         setIsProcessing(false);
         return;
       }
+
+      console.log("Booking Data BS", bookingContext.bookingData);
 
       onSuccessfulCheckout();
     } catch (err) {

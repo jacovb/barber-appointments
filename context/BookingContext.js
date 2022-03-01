@@ -16,7 +16,7 @@ const startBookingForm = {
   date: new Date().toISOString().split("T")[0],
   time: "",
   bookingUserId: "",
-  stripeApi: "",
+  bookingTreatmentId: "",
 };
 
 const BookingContextProvider = ({ children }) => {
@@ -80,11 +80,6 @@ const BookingContextProvider = ({ children }) => {
   }
 
   async function createBooking() {
-    // setBookingData({
-    //   ...bookingData,
-    //   user: currentUserDetails.id,
-    // });
-    console.log("Booking data", bookingData);
     try {
       await API.graphql({
         query: createBookingMutation,
@@ -104,7 +99,6 @@ const BookingContextProvider = ({ children }) => {
     setBookingData({
       ...bookingData,
       bookingTreatmentId: e.target.value.id,
-      stripeApi: e.target.value.stripeApi,
     });
   }
 

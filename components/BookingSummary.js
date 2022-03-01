@@ -7,25 +7,15 @@ import { PencilAltIcon } from "@heroicons/react/outline";
 export default function BookingSummary() {
   const bookingContext = useContext(BookingContext);
   let treatment = bookingContext.treatments.filter(
-    (treatment) => treatment.stripeApi === bookingContext.bookingData.stripeApi
+    (treatment) =>
+      treatment.id === bookingContext.bookingData.bookingTreatmentId
   )[0];
 
   console.log("bookingData", bookingContext.bookingData);
 
-  useEffect(() => {
-    bookingContext.setBookingData({
-      ...bookingContext.bookingData,
-      bookingTreatmentId: treatment.id,
-      treatment: treatment.title,
-      description: treatment.description,
-      price: treatment.price,
-    });
-  }, [treatment]);
-
   return (
     <>
       {console.log("treatment", treatment)}
-      {console.log("Booking Data BS", bookingContext.bookingData)}
       <Block>
         <div className="grid grid-cols-2 text-lg">
           <p className="mx-4 my-1 text-gray-400 justify-self-end">Treatment:</p>
