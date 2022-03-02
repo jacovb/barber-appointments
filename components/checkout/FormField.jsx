@@ -13,6 +13,7 @@ export default function FormField({ label, type, name, placeholder, required }) 
         placeholder={placeholder} 
         required 
         className="text-base w-3/4 py-2 px-3 bg-transparent border-0" 
+        autoComplete="off"
         />
     </div>
   )

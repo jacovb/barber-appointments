@@ -1,4 +1,4 @@
-import React, { useEffect, useContext } from "react";
+import React, { useContext } from "react";
 import { BookingContext } from "../context/BookingContext";
 import BookingEditModal from "./BookingEditModal";
 import Block from "./checkout/Block";
@@ -11,11 +11,8 @@ export default function BookingSummary() {
       treatment.id === bookingContext.bookingData.bookingTreatmentId
   )[0];
 
-  console.log("bookingData", bookingContext.bookingData);
-
   return (
     <>
-      {console.log("treatment", treatment)}
       <Block>
         <div className="grid grid-cols-2 text-lg">
           <p className="mx-4 my-1 text-gray-400 justify-self-end">Treatment:</p>

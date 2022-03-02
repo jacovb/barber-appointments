@@ -110,7 +110,7 @@ export default function CheckoutForm() {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} autoComplete="off">
       <Block>
         <BillingDetailsFields />
       </Block>

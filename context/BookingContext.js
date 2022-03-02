@@ -85,10 +85,13 @@ const BookingContextProvider = ({ children }) => {
         query: createBookingMutation,
         variables: { input: bookingData },
       });
-      setBookingData(startBookingForm);
     } catch (error) {
       console.log(error);
     }
+  }
+
+  function resetBookingData() {
+    setBookingData(startBookingForm);
   }
 
   function handleBookingEntry(e) {
@@ -121,6 +124,7 @@ const BookingContextProvider = ({ children }) => {
     editModalOpen,
     setEditModalOpen,
     handleTreatmentPicker,
+    resetBookingData,
   };
 
   return (
