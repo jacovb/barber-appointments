@@ -122,15 +122,19 @@ export default function CheckoutForm() {
         />
       </Block>
 
-      {checkoutError && <div>{checkoutError}</div>}
-
-      <Block>
-        <div className="flex flex-col items-center">
-          <button disabled={isProcessing || !stripe} id="submit">
-            {isProcessing ? "Processing..." : "Pay now"}
-          </button>
+      {checkoutError && (
+        <div className="flex items-center justify-center w-96 h-fit text-red-500 p-2 m-2">
+          {checkoutError}
         </div>
-      </Block>
+      )}
+
+      <button
+        disabled={isProcessing || !stripe}
+        id="submit"
+        className="w-96 py-3 my-2 mx-4 bg-neumorph shadow-neumorph rounded-lg border border-white text-white border-opacity-0 transition duration-200 hover:border-opacity-100 hover:bg-red-700"
+      >
+        {isProcessing ? "Processing..." : "Pay now"}
+      </button>
     </form>
   );
 }

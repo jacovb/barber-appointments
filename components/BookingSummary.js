@@ -3,13 +3,19 @@ import { BookingContext } from "../context/BookingContext";
 import BookingEditModal from "./BookingEditModal";
 import Block from "./checkout/Block";
 import { PencilAltIcon } from "@heroicons/react/outline";
+import { useRouter } from "next/router";
 
 export default function BookingSummary() {
   const bookingContext = useContext(BookingContext);
+  const router = useRouter();
   let treatment = bookingContext.treatments.filter(
     (treatment) =>
       treatment.id === bookingContext.bookingData.bookingTreatmentId
   )[0];
+
+  if (!treatment) {
+    router.push("/");
+  }
 
   return (
     <>

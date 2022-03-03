@@ -1,86 +1,69 @@
-/* This example requires Tailwind CSS v2.0+ */
-import { Fragment, useState, useContext } from "react";
 import { Dialog, Transition } from "@headlessui/react";
-import { XIcon } from "@heroicons/react/outline";
+import { Fragment, useState, useContext } from "react";
 import { BookingContext } from "../context/BookingContext";
+import TreatmentPicker from "./TreatmentPicker";
 import DatePicker from "./DatePicker";
 import Timeslots from "./Timeslots";
-import TreatmentPicker from "./TreatmentPicker";
 import ReviewButton from "./ReviewButton";
 
 export default function BookingModal() {
   const bookingContext = useContext(BookingContext);
 
   return (
-    <Transition.Root show={bookingContext.editModalOpen} as={Fragment}>
-      <Dialog
-        as="div"
-        className="fixed inset-0 overflow-hidden"
-        onClose={bookingContext.setEditModalOpen}
-      >
-        <div className="absolute inset-0 overflow-hidden">
-          <Transition.Child
-            as={Fragment}
-            enter="ease-in-out duration-500"
-            enterFrom="opacity-0"
-            enterTo="opacity-100"
-            leave="ease-in-out duration-500"
-            leaveFrom="opacity-100"
-            leaveTo="opacity-0"
-          >
-            <Dialog.Overlay className="absolute inset-0 bg-gray-500 bg-opacity-75 transition-opacity" />
-          </Transition.Child>
-          <div className="fixed inset-y-0 right-0 pl-10 max-w-full flex">
+    <>
+      <Transition appear show={bookingContext.bookingModalOpen} as={Fragment}>
+        <Dialog
+          as="div"
+          className="fixed inset-0 z-10 overflow-y-auto"
+          onClose={bookingContext.setBookingModalOpen}
+        >
+          <div className="min-h-screen px-4 text-center bg-gray-600 bg-opacity-75">
             <Transition.Child
               as={Fragment}
-              enter="transform transition ease-in-out duration-500 sm:duration-700"
-              enterFrom="translate-x-full"
-              enterTo="translate-x-0"
-              leave="transform transition ease-in-out duration-500 sm:duration-700"
-              leaveFrom="translate-x-0"
-              leaveTo="translate-x-full"
+              enter="ease-out duration-100"
+              enterFrom="opacity-0"
+              enterTo="opacity-100"
+              leave="ease-in duration-100"
+              leaveFrom="opacity-100"
+              leaveTo="opacity-0"
             >
-              <div className="relative w-screen max-w-lg">
-                <Transition.Child
-                  as={Fragment}
-                  enter="ease-in-out duration-500"
-                  enterFrom="opacity-0"
-                  enterTo="opacity-100"
-                  leave="ease-in-out duration-500"
-                  leaveFrom="opacity-100"
-                  leaveTo="opacity-0"
+              <Dialog.Overlay className="absolute inset-0" />
+            </Transition.Child>
+
+            {/* This element is to trick the browser into centering the modal contents. */}
+            <span
+              className="inline-block h-screen align-middle"
+              aria-hidden="true"
+            >
+              &#8203;
+            </span>
+            <Transition.Child
+              as={Fragment}
+              enter="ease-out duration-100"
+              enterFrom="opacity-0 scale-95"
+              enterTo="opacity-100 scale-100"
+              leave="ease-in duration-100"
+              leaveFrom="opacity-100 scale-100"
+              leaveTo="opacity-0 scale-95"
+            >
+              <div className="inline-block w-full max-w-lg p-6 my-8 overflow-hidden text-left align-middle transition-all transform bg-neumorph shadow-float shadow-black rounded-xl text-white">
+                <Dialog.Title
+                  as="h3"
+                  className="flex justify-center text-2xl font-medium leading-6"
                 >
-                  <div className="absolute top-0 left-0 -ml-8 pt-4 pr-2 flex sm:-ml-10 sm:pr-4">
-                    <button
-                      type="button"
-                      className="rounded-md text-gray-300 hover:text-white focus:outline-none focus:ring-2 focus:ring-white"
-                      onClick={() => bookingContext.setEditModalOpen(false)}
-                    >
-                      <span className="sr-only">Close panel</span>
-                      <XIcon className="h-6 w-6" aria-hidden="true" />
-                    </button>
-                  </div>
-                </Transition.Child>
-                <div className="h-full flex flex-col py-6 bg-neumorph shadow-xl overflow-y-scroll text-white">
-                  <div className="px-4 sm:px-6">
-                    <Dialog.Title className="text-xl font-medium">
-                      Book an Appointment
-                    </Dialog.Title>
-                  </div>
-                  <div className="mt-6 relative flex-1 px-4 sm:px-6">
-                    {/* Replace with your content */}
-                    <TreatmentPicker />
-                    <DatePicker />
-                    <Timeslots />
-                    <ReviewButton />
-                    {/* /End replace */}
-                  </div>
+                  Book an Appointment
+                </Dialog.Title>
+                <div className="mt-2">
+                  <TreatmentPicker />
+                  <DatePicker />
+                  <Timeslots />
+                  <ReviewButton />
                 </div>
               </div>
             </Transition.Child>
           </div>
-        </div>
-      </Dialog>
-    </Transition.Root>
+        </Dialog>
+      </Transition>
+    </>
   );
 }

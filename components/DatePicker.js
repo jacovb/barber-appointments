@@ -24,13 +24,14 @@ export default function DatePicker() {
 
   return (
     <div className="flex flex-col items-center">
+      <div className="w-450 p-0.5 text-left">Date:</div>
       <Calendar
         onChange={setSelectedDate}
         value={selectedDate}
         minDate={new Date()}
         prev2Label={null}
         next2Label={null}
-        className="bg-neumorph shadow-neumorph px-4 py-4 mx-8 my-4 w-6/12 rounded-lg border-0"
+        className="bg-neumorph shadow-neumorph px-4 py-2 mx-8 my-2 w-6/12 rounded-lg border-0"
       />
     </div>
   );

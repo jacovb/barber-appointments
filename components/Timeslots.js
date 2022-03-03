@@ -34,7 +34,8 @@ export default function Timeslots() {
 
   return (
     <div className="flex flex-col items-center">
-      <div className="flex flex-row flex-wrap max-w-full w-450 shadow-neumorph p-4 m-4 justify-center rounded-lg">
+      <div className="w-450 p-0.5 text-left">Time:</div>
+      <div className="flex flex-row flex-wrap max-w-full w-450 shadow-neumorph p-4 mx-4 my-2 justify-center rounded-lg">
         {slots.map((timeslot, idx) => (
           <button
             key={idx}

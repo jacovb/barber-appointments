@@ -8,7 +8,7 @@ export default function TreatmentPicker() {
     <>
       <form>
         <div className="flex flex-col items-center">
-          <label htmlFor="treatmentSelect" className="w-450 text-left">
+          <label htmlFor="treatmentSelect" className="w-450 p-0.5 text-left">
             Treatment:
           </label>
           <select
@@ -18,7 +18,7 @@ export default function TreatmentPicker() {
             name="bookingTreatmentId"
             required
             onChange={bookingContext.handleBookingEntry}
-            className="text-white text-sm w-450 h-10 py-2 pl-3 pr-10 mt-2 mb-4 text-left bg-neumorph rounded-lg shadow-neumorph cursor-default border-none outline-none focus:ring-0"
+            className="text-white text-sm w-450 h-10 py-2 pl-3 pr-10 my-2 text-left bg-neumorph rounded-lg shadow-neumorph cursor-default border-none outline-none focus:ring-0"
           >
             <option value="" disabled>
               Please select a Product...
