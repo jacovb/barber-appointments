@@ -16,7 +16,9 @@ export default function SignIn({ setAuthState }) {
 
   return (
     <div>
-      <p className="text-3xl font-black text-white">Sign in to Book</p>
+      <p className="text-3xl font-black text-white">
+        Sign in to Book Appointment
+      </p>
       <form onSubmit={handleSubmit(onSubmit)} className="signin-form">
         <div className="mt-10">
           <label htmlFor="email" className="text-sm text-white">

@@ -2,7 +2,7 @@ import FormField from "./FormField";
 
 export default function BillingDetailsFields () {
   return (
-    <>
+    <div className="divide-y">
       <FormField
         name="name"
         label="Name"
@@ -42,6 +42,6 @@ export default function BillingDetailsFields () {
         placeholder="SE1 7FG"
         required
       />
-    </>
+    </div>
   )
 }
