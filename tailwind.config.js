@@ -29,6 +29,7 @@ module.exports = {
         neumorph: "#323334",
         brass: "#AF7757",
         hoverGrey: "#e6e6e6",
+        nav: "#1b1c1c",
       },
       fontFamily: {
         AbrilFatface: ["Abril Fatface"],
