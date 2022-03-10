@@ -77,8 +77,6 @@ export default function CheckoutForm() {
         return;
       }
 
-      console.log("Booking Data BS", bookingContext.bookingData);
-
       onSuccessfulCheckout();
     } catch (err) {
       setCheckoutError(err.message);

@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import Link from "next/link";
 import { AuthContext } from "../context/AuthContext";
 import { BookingContext } from "../context/BookingContext";
-import { LogoutIcon } from "@heroicons/react/outline";
+import { LogoutIcon, ScissorsIcon } from "@heroicons/react/outline";
 import BarberNameSmall from "./BarberNameSmall";
 
 export default function Navbar() {
@@ -21,6 +21,11 @@ export default function Navbar() {
     <>
       <nav className="text-white bg-nav flex flex-row justify-between items-center h-12">
         <div className="flex items-center pl-6 divide-x divide-gray-700">
+          <Link href="/">
+            <div className="px-4 text-gray-400 hover:text-red-500 hover:font-medium transition duration-200">
+              <ScissorsIcon className="w-6 h-8" />
+            </div>
+          </Link>
           <Link href="/prices">
             <a className="px-4 text-gray-400 hover:text-red-500 hover:font-medium transition duration-200">
               Prices
@@ -46,7 +51,7 @@ export default function Navbar() {
       <div className="flex justify-center bg-neumorph">
         <Link href="/">
           <a
-            className="pt-4 cursor-pointer text-white hover:text-red-500 transition duration-200"
+            className="cursor-pointer text-white hover:text-red-500 transition duration-200"
             onClick={() => {
               bookingContext.setBookingModalOpen(false);
             }}

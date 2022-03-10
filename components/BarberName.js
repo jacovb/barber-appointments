@@ -1,4 +1,4 @@
-import { ScissorsIcon } from "@heroicons/react/solid";
+import { ScissorsIcon } from "@heroicons/react/outline";
 
 export default function BarberName() {
   return (
