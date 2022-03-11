@@ -19,11 +19,11 @@ export default function Navbar() {
 
   return (
     <>
-      <nav className="text-white bg-nav flex flex-row justify-between items-center h-12">
+      <nav className="text-white bg-neumorph flex flex-row justify-between items-center h-12">
         <div className="flex items-center pl-6 divide-x divide-gray-700">
           <Link href="/">
             <div className="px-4 text-gray-400 hover:text-red-500 hover:font-medium transition duration-200">
-              <ScissorsIcon className="w-6 h-8" />
+              <ScissorsIcon className="w-6 h-6" />
             </div>
           </Link>
           <Link href="/prices">
