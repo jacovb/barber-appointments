@@ -10,7 +10,7 @@ import BookingContextProvider from "../context/BookingContext";
 
 function MyApp({ Component, pageProps }) {
   return (
-    <div>
+    <div className="bg-neumorph min-h-screen">
       <AuthProvider>
         <AuthIsNotSignedIn>
           <AuthPage />
