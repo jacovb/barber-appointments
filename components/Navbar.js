@@ -22,12 +22,22 @@ export default function Navbar() {
       <nav className="text-white bg-neumorph flex flex-row justify-between items-center h-12">
         <div className="flex items-center pl-6 divide-x divide-gray-700">
           <Link href="/">
-            <div className="px-4 text-gray-400 hover:text-red-500 hover:font-medium transition duration-200">
+            <a
+              className="px-4 text-gray-400 hover:text-red-500 hover:font-medium transition duration-200"
+              onClick={() => {
+                bookingContext.setBookingModalOpen(false);
+              }}
+            >
               <ScissorsIcon className="w-6 h-6" />
-            </div>
+            </a>
           </Link>
           <Link href="/prices">
-            <a className="px-4 text-gray-400 hover:text-red-500 hover:font-medium transition duration-200">
+            <a
+              className="px-4 text-gray-400 hover:text-red-500 hover:font-medium transition duration-200"
+              onClick={() => {
+                bookingContext.setBookingModalOpen(false);
+              }}
+            >
               Prices
             </a>
           </Link>

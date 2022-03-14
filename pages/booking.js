@@ -11,7 +11,11 @@ const stripePromise = loadStripe(
 export default function Booking() {
   return (
     <div className="bg-neumorph min-h-screen flex flex-col items-center">
-      <p className="text-4xl text-white my-3">Booking Overview</p>
+      <div className="flex flex-row items-center">
+        <div className="w-24 h-px bg-white my-8" />
+        <h1 className="text-4xl text-white m-6">Booking Overview</h1>
+        <div className="w-24 h-px bg-white my-8" />
+      </div>
       <BookingSummary />
       <div className="App">
         <Elements stripe={stripePromise}>

@@ -17,7 +17,11 @@ export default function Confirmation() {
 
   return (
     <div className="bg-neumorph min-h-screen flex flex-col items-center text-white">
-      <div className="text-4xl my-6">Order Confirmation</div>
+      <div className="flex flex-row items-center">
+        <div className="w-24 h-px bg-white my-8" />
+        <h1 className="text-4xl m-6">Order Confirmation</h1>
+        <div className="w-24 h-px bg-white my-8" />
+      </div>
       <div className="grid grid-cols-2 text-lg">
         <p className="mx-4 my-1 text-gray-400 justify-self-end">Name:</p>
         <p className="mx-4 my-1">

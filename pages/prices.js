@@ -9,7 +9,11 @@ export default function Prices() {
   return (
     <>
       <div className="flex flex-col items-center bg-neumorph text-white h-screen">
-        <h1 className="text-4xl my-6">Treatment Prices</h1>
+        <div className="flex flex-row items-center">
+          <div className="w-24 h-px bg-white my-8" />
+          <h1 className="text-4xl m-6">Treatment Prices</h1>
+          <div className="w-24 h-px bg-white my-8" />
+        </div>
         {bookingContext.treatments.map((treatment, idx) => (
           <PriceItem key={idx} treatment={treatment} />
         ))}
