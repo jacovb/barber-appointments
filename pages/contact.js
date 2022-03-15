@@ -11,9 +11,9 @@ export default function Contact() {
     <>
       <div className="flex flex-col items-center bg-neumorph text-white h-screen">
         <div className="flex flex-row items-center">
-          <div className="w-24 h-px bg-white my-8" />
+          <div className="invisible w-0 sm:w-24 h-px bg-white my-8 sm:visible" />
           <h1 className="text-4xl m-6">Contact</h1>
-          <div className="w-24 h-px bg-white my-8" />
+          <div className="invisible w-0 sm:w-24 h-px bg-white my-8 sm:visible" />
         </div>
         <div className="flex flex-col">
           <div className="flex flex-row m-3">

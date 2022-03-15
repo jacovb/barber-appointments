@@ -31,6 +31,9 @@ module.exports = {
         hoverGrey: "#e6e6e6",
         nav: "#1b1c1c",
       },
+      backgroundImage: {
+        london: "url('../images/WestLondonDark.jpeg')",
+      },
       fontFamily: {
         AbrilFatface: ["Abril Fatface"],
         Raleway: ["Raleway"],
