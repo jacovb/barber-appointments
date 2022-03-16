@@ -16,7 +16,7 @@ export default function Confirmation() {
   }, []);
 
   return (
-    <div className="bg-neumorph min-h-screen flex flex-col items-center text-white">
+    <div className="bg-neumorph min-h-fit flex flex-col items-center text-white">
       <div className="flex flex-row items-center">
         <div className="invisible w-0 sm:w-24 h-px bg-white my-8 sm:visible" />
         <h1 className="text-4xl m-6">Order Confirmation</h1>

@@ -1,10 +1,13 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { BookingContext } from "../context/BookingContext";
 import PriceItem from "../components/PriceItem";
 import BookingModal from "../components/BookingModal";
 
 export default function Prices() {
   const bookingContext = useContext(BookingContext);
+  useEffect(() => {
+    bookingContext.resetBookingData();
+  }, []);
 
   return (
     <>

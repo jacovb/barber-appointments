@@ -129,7 +129,7 @@ export default function CheckoutForm() {
       <button
         disabled={isProcessing || !stripe}
         id="submit"
-        className="w-96 py-3 mt-2 mx-4 mb-4 bg-neumorph shadow-neumorph rounded-lg border border-white text-white border-opacity-0 transition duration-200 hover:border-opacity-100 hover:bg-red-700"
+        className="w-96 py-3 mt-3 mx-4 mb-4 bg-neumorph shadow-neumorph rounded-lg border border-white text-white border-opacity-0 transition duration-200 hover:border-opacity-100 hover:bg-red-700"
       >
         {isProcessing ? "Processing..." : "Pay now"}
       </button>
