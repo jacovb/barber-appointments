@@ -1,5 +1,5 @@
 import { Dialog, Transition } from "@headlessui/react";
-import { Fragment, useState, useContext } from "react";
+import { Fragment, useContext } from "react";
 import { BookingContext } from "../context/BookingContext";
 import TreatmentPicker from "./TreatmentPicker";
 import DatePicker from "./DatePicker";
