@@ -51,9 +51,18 @@ export default function CheckoutForm() {
     const cardElement = elements.getElement("card");
 
     try {
-      const { data: clientSecret } = await axios.post("/api/payment_intents", {
-        amount: treatment.price * 100,
-      });
+      const CancelToken = axios.CancelToken;
+      const source = CancelToken.source();
+
+      const { data: clientSecret } = await axios.post(
+        "/api/payment_intents",
+        {
+          amount: treatment.price * 100,
+        },
+        {
+          cancelToken: source.token,
+        }
+      );
 
       const paymentMethodReq = await stripe.createPaymentMethod({
         type: "card",
@@ -78,6 +87,7 @@ export default function CheckoutForm() {
       }
 
       onSuccessfulCheckout();
+      source.cancel("Operation Canceled");
     } catch (err) {
       setCheckoutError(err.message);
     }
