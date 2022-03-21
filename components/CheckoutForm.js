@@ -51,8 +51,7 @@ export default function CheckoutForm() {
     const cardElement = elements.getElement("card");
 
     try {
-      const CancelToken = axios.CancelToken;
-      const source = CancelToken.source();
+      const source = axios.CancelToken.source();
 
       const { data: clientSecret } = await axios.post(
         "/api/payment_intents",
@@ -87,9 +86,9 @@ export default function CheckoutForm() {
       }
 
       onSuccessfulCheckout();
-      source.cancel("Operation Canceled");
     } catch (err) {
       setCheckoutError(err.message);
+      if (axios.isCancel(err)) return;
     }
   };
 
