@@ -1,15 +1,44 @@
 import { useContext, useEffect, useState } from "react";
 import { BookingContext } from "../context/BookingContext";
 import { AuthContext } from "../context/AuthContext";
+import { useRouter } from "next/router";
 
 export default function Confirmation() {
   const bookingContext = useContext(BookingContext);
   const authContext = useContext(AuthContext);
   const [bookingInfo, setBookingInfo] = useState(bookingContext.bookingData);
+  const router = useRouter();
+  const [stripe, setStripe] = useState(null);
+
+  useEffect(() => {
+    const stripeKey = process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY;
+    const stripeUrl = "https://js.stripe.com/v3/";
+
+    if (!document.querySelector("#stripe-js")) {
+      const script = document.createElement("script");
+      script.async = true;
+      script.id = "stripe-js";
+      script.onload = () => {
+        setStripe(window.Stripe(stripeKey));
+      };
+      document.body.appendChild(script);
+      script.src = stripeUrl;
+    } else if (window.Stripe) {
+      setStripe(window.Stripe(stripeKey));
+    }
+
+    return () => {
+      window.location.reload();
+    };
+  }, []);
 
   let treatment = bookingContext.treatments.filter(
     (treatment) => treatment.id === bookingInfo.bookingTreatmentId
   )[0];
+
+  if (!treatment) {
+    router.push("/");
+  }
 
   useEffect(() => {
     bookingContext.resetBookingData();
