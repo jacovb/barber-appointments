@@ -86,8 +86,8 @@ export default function CheckoutForm() {
         return;
       }
 
-      onSuccessfulCheckout();
       controller.abort();
+      onSuccessfulCheckout();
     } catch (err) {
       setCheckoutError(err.message);
     }
