@@ -17,6 +17,8 @@ export default function BookingSummary() {
     router.push("/");
   }
 
+  console.log("BC @ BookingSummary", bookingContext.bookingData);
+
   return (
     <>
       <Block>

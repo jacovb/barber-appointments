@@ -22,6 +22,13 @@ export default function DatePicker() {
     }
   }, [selectedDate, setSelectedDate]);
 
+  console.log(
+    "BC @ DatePicker",
+    new Date(selectedDate.getTime() - selectedDate.getTimezoneOffset() * 60000)
+      .toISOString()
+      .split("T")[0]
+  );
+
   return (
     <div className="flex flex-col items-center">
       <div className="w-450 p-0.5 text-left">Date:</div>
