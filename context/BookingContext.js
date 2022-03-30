@@ -61,7 +61,12 @@ const BookingContextProvider = ({ children }) => {
   async function fetchDayBookings(searchDate) {
     let dateFilter = {
       date: {
-        contains: new Date(searchDate).toISOString().split("T")[0],
+        contains: new Date(
+          new Date(searchDate).getTime() -
+            new Date(searchDate).getTimezoneOffset() * 60000
+        )
+          .toISOString()
+          .split("T")[0],
       },
     };
     try {

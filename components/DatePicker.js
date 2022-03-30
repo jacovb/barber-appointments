@@ -3,20 +3,26 @@ import Calendar from "react-calendar";
 import { BookingContext } from "../context/BookingContext";
 
 export default function DatePicker() {
+  function DSTDateConvert(date) {
+    return new Date(
+      new Date(date).getTime() - new Date(date).getTimezoneOffset() * 60000
+    );
+  }
+
   const bookingContext = useContext(BookingContext);
   const [selectedDate, setSelectedDate] = useState(
-    new Date(bookingContext.bookingData.date)
+    DSTDateConvert(bookingContext.bookingData.date)
   );
 
   useEffect(() => {
     if (
-      selectedDate.toISOString().split("T")[0] !==
+      DSTDateConvert(selectedDate).toISOString().split("T")[0] !==
       bookingContext.bookingData.date
     ) {
       bookingContext.fetchDayBookings(selectedDate);
       bookingContext.setBookingData({
         ...bookingContext.bookingData,
-        date: selectedDate.toISOString().split("T")[0],
+        date: DSTDateConvert(selectedDate).toISOString().split("T")[0],
       });
       bookingContext.setTimeSelect("");
     }
@@ -24,9 +30,10 @@ export default function DatePicker() {
 
   console.log(
     "BC @ DatePicker",
-    new Date(selectedDate.getTime() - selectedDate.getTimezoneOffset() * 60000)
-      .toISOString()
-      .split("T")[0]
+    bookingContext.bookingData
+    // new Date(selectedDate.getTime() - selectedDate.getTimezoneOffset() * 60000)
+    //   .toISOString()
+    //   .split("T")[0]
   );
 
   return (
