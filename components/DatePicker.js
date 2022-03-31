@@ -3,6 +3,7 @@ import Calendar from "react-calendar";
 import { BookingContext } from "../context/BookingContext";
 
 export default function DatePicker() {
+  // function to correct the Daylight Saving Time (DST), when that is in effect
   function DSTDateConvert(date) {
     return new Date(
       new Date(date).getTime() - new Date(date).getTimezoneOffset() * 60000
@@ -27,14 +28,6 @@ export default function DatePicker() {
       bookingContext.setTimeSelect("");
     }
   }, [selectedDate, setSelectedDate]);
-
-  console.log(
-    "BC @ DatePicker",
-    bookingContext.bookingData
-    // new Date(selectedDate.getTime() - selectedDate.getTimezoneOffset() * 60000)
-    //   .toISOString()
-    //   .split("T")[0]
-  );
 
   return (
     <div className="flex flex-col items-center">

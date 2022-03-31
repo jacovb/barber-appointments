@@ -52,7 +52,6 @@ export default function CheckoutForm() {
 
     try {
       const controller = new AbortController();
-      // const source = axios.CancelToken.source();
 
       const { data: clientSecret } = await axios.post(
         "/api/payment_intents",
