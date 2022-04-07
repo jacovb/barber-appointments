@@ -123,6 +123,10 @@ export default function CheckoutForm() {
       </Block>
 
       <Block>
+        <span className="tooltip rounded shadow-lg w-72 p-3 bg-gray-100 text-blue-500 mt-10 ">
+          <p className="font-bold">Use Test Card:</p>
+          <p>4242 4242 4242 4242 - Success</p>
+        </span>
         <CardElement
           options={cardElementOptions}
           onChange={handleCardDetailsChange}
