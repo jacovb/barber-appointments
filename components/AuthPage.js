@@ -1,7 +1,7 @@
 import { useState } from "react";
 import "../src/configureAmplify";
 import SignIn from "./SignIn";
-import SignUp from "./signUp";
+import SignUp from "./SignUp";
 import VerifySignUp from "./VerifySignUp";
 import ForgotPassword from "./ForgotPassword";
 import ForgotPasswordSubmit from "./ForgotPasswordSubmit";
