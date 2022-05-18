@@ -13,7 +13,7 @@ export default function AuthPage() {
 
   return (
     <div className="bg-neumorph min-h-screen">
-      <div className="flex flex-row items-center justify-center h-full">
+      <div className="flex flex-row items-center justify-center min-h-screen flex-wrap">
         <BarberName />
         <div className="flex flex-col items-center pt-6">
           <div className="max-w-full sm:w-540 mt-6 mb-14">
